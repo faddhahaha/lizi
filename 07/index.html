@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +10,12 @@
     <title>Document</title>
 </head>
 <style>
-    
+   /* a{
+       display: flex;
+       align-items: ;
+       justify-content: space-around;
+       font-weight: 600;
+   } */
 </style>
 
 <body>
@@ -34,24 +40,26 @@
                 }
                 render(){
                     const list = this.state.repos.map((item,key)=>
-                            <div style={{backgroundColor:'#EBEBEB',width:'25%'}}> 
-                                <div>#{key}</div>
-                                <div>
-                                    <img src={item.owner.avatar_url} />
+                    
+                            <div style={{backgroundColor:'#EBEBEB',width:'23%',display:'flex',flexDirection:'column', alignItems:'center', justifyContent: 'center',margin:'1% 1%',}}> 
+                                <h2>#{key}</h2>
+                                <div style={{margin:'0 auto',display:' inline-block',textAlign:'center'}}>
+                                    <img style={{width:'50%',}} src={item.owner.avatar_url} />
                                 </div>
-                                <div >{item.owner.login}</div>
+                                <div style={{color:'red',fontWeight:'600'}}>{item.owner.login}</div>
                                 <div>
                                 <ul class="fa-ul">
-                                    <li><i class="fa-li fa fa-check-square"></i>{item.owner.login}</li>
-                                    <li><i class="fa-li fa fa-check-square"></i>can be used</li>
-                                    <li><i class="fa-li fa fa-spinner fa-spin"></i>as bullets</li>
-                                    <li><i class="fa-li fa fa-square"></i>in lists</li>
+                                    <li><i class="fa-li fa fa-book"></i>{item.owner.login}</li>
+                                    <li><i class="fa-li fa fa-check-square"></i>{item.watchers}</li>
+                                    <li><i class="fa-li fa fa-spinner fa-spin"></i>{item.forks}</li>
+                                    <li><i class="fa-li fa fa-square"></i>{item.stargazers_count}</li>
                                 </ul>
                                 </div>  
                             </div>
                 
                     );
-                    return <div style={{display:'flex',flexWrap:'wrap'}}>
+                    
+                    return <div style={{display:'flex',flexWrap:'wrap',justifyContent: 'space-around'}}>
                                
                                 {list}
                            </div>
