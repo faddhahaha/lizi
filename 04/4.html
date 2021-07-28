@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet/less" href='index.less'>
+    <script type="text/javascript" src='http://cdnjs.cloudflare.com/ajax/libs/less.js/3.11.1/less.min.js'></script>
+</head>
+
+<body>
+    <div class="barrage">
+        <div>
+            <div class="conter"></div>
+        </div>
+        <input type="text" />
+        <div class="btn">
+            <button class="launch" id="btn1">发射</button>
+            <button class="clear">清屏</button>
+        </div>
+    </div>
+</body>
+<script>
+    var conter = document.querySelector('.conter');
+    var launch = document.getElementById('btn1');
+    console.log(launch);
+    var clear = document.querySelector('.clear');
+    var texts = document.querySelector('input');
+    launch.onclick = function () {
+        var p = document.createElement('p');
+        p.style.position = 'absolute';
+        p.innerHTML = texts.value;
+        p.style.left =`${conter.offsetLeft+530}px`;
+        p.style.color = `#${('00000' + (Math.random() * 0x1000000 << 0).toString(16)).substr(-6)} `;
+        p.style.zIndex = 100;
+        p.style.top = Math.random() * 370 + 'px';
+        conter.appendChild(p);
+        var x = setInterval(function () {
+            p.style.left = parseInt(p.style.left) - 10 + 'px';
+            if (parseInt(p.style.left)  <=conter.offsetLeft) {
+                conter.removeChild(p);
+                clearInterval(x);
+            }
+
+        }, 100)
+
+    }
+    clear.onclick =function(){
+        conter.innerHTML='';
+    }
+</script>
+
+</html>

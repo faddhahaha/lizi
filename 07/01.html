@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/react/16.13.1/umd/react.production.min.js" crossorigin></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.min.js"></script>
+    <script type="text/babel">
+           class Click extends React.Component{
+               constructor(props){
+                   super(props);
+                   this.state = {date:new Date()};
+                   setTimeout(() => {
+                        this.setState({date:new Date()})                       
+                   }, 1000);
+               }
+               render(){
+                   return <div>
+                            <h2>hellow,worde</h2>
+                            <h2>It is { this.state.date.toLocaleTimeString()}</h2>
+                          </div>
+               }
+           }
+           class App extends React.Component{
+               render(){
+                   return  <Click />
+               }
+           }
+           ReactDOM.render(
+               <App />,
+               document.getElementById('container')
+           );
+    </script>
+    
+</body>
+</html>

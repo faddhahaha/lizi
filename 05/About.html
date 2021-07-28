@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous">
+    </script>
+    <title>Document</title>
+    
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #center-map{
+    height: 400px;
+    width:90%;
+    margin: 0 auto;
+    }
+    .center-text{
+        margin: 40px 0;
+    }
+    .center-text-item{
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    
+    }
+</style>
+<body>
+    <iframe src="head.html" style="margin-bottom: -5px;" scrolling="no" frameborder="0" height="80px" id="mainFrame" width="100%"></iframe>
+        <div class="container-fluid" style="margin: 40px;">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div id="center-map">
+                  
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="center-text">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint magnam, et delectus quod tempore voluptatibus assumenda quam eligendi consequatur quasi maiores inventore cumque, odit vero eaque repudiandae impedit quos laudantium, hic error repellendus rem. Facere et fugiat libero quis nihil!</p>
+                        <div class="center-text-item" style="margin-top: 40px;" >
+                            <img src="地图，位置，定位.svg" alt="" style="width: 40px;" />
+                            <p style="margin-left: 20px;">福州市参山广场</p>
+                        </div>
+                        <div class="center-text-item" >
+                            <img src="信.svg" alt="" style="width: 40px;" />
+                            <p style="margin-left: 20px;">admin@zzz.com</p>
+                        </div>
+                        <div class="center-text-item" >
+                            <img src="客服.svg" alt="" style="width: 40px;" />
+                            <p style="margin-left: 20px;">121312145</p>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    <iframe src="foot.html" style="margin-bottom: -5px;" scrolling="no" frameborder="0" height="480px" id="mainFrame" width="100%"></iframe>
+
+</body>
+<script src="https://webapi.amap.com/maps?v=1.4.2&key=fcab80f24801649871ab7852bb556cc7"></script>
+<script type="text/javascript">
+    var map = new AMap.Map('center-map', {
+       resizeEnable: true,
+    
+       zoom:11
+    });
+    mapObj = new AMap.Map('center-map');
+    mapObj.plugin('AMap.Geolocation', function () {
+    geolocation = new AMap.Geolocation({
+        enableHighAccuracy: true,//是否使用高精度定位，默认:true
+        timeout: 10000,          //超过10秒后停止定位，默认：无穷大
+        maximumAge: 0,           //定位结果缓存0毫秒，默认：0
+        convert: true,           //自动偏移坐标，偏移后的坐标为高德坐标，默认：true
+        showButton: true,        //显示定位按钮，默认：true
+        buttonPosition: 'LB',    //定位按钮停靠位置，默认：'LB'，左下角
+        buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+        showMarker: true,        //定位成功后在定位到的位置显示点标记，默认：true
+        showCircle: true,        //定位成功后用圆圈表示定位精度范围，默认：true
+        panToLocation: true,     //定位成功后将定位到的位置作为地图中心点，默认：true
+        zoomToAccuracy:true      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+    });
+    mapObj.addControl(geolocation);
+    geolocation.getCurrentPosition();
+    AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
+    AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
+});
+</script>
+<script type="text/javascript" src="https://webapi.amap.com/demos/js/liteToolbar.js"></script>
+</html>
