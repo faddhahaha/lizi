@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +9,7 @@
     <title>Document</title>
 </head>
 <style>
-   /* a{
+    /* a{
        display: flex;
        align-items: ;
        justify-content: space-around;
@@ -26,17 +25,72 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="text/babel">
+        class Switch extends React.Component{
+            constructor(props){
+                super(props);
+                this.state={switchIndex:'ALL'}
+            }
+            componentDidMount() {
+                this.props.getMsg(this.state.switchIndex);
+            }
+            handleClick = (e) => {
+                
+
+                this.setState({
+                    switchIndex:e.target.innerText
+                });
+                this.props.getMsg(this.state.switchIndex);
+                
+            }
+            render(){
+                return <h1 style={{textAlign:'center'}}>
+                         <span style={{marginRight:'20px',color:(this.state.switchIndex=='ALL') ? "red" : "black"}} onClick={this.handleClick}>ALL</span>
+                         <span style={{marginRight:'20px',color:(this.state.switchIndex=='JavaScript') ? "red" : "black"}} onClick={this.handleClick}>JavaScript</span>
+                         <span style={{marginRight:'20px',color:(this.state.switchIndex=='Ruby') ? "red" : "black"}} onClick={this.handleClick}>Ruby</span>
+                         <span style={{marginRight:'20px',color:(this.state.switchIndex=='java') ? "red" : "black"}} onClick={this.handleClick}>java</span>
+                         <span style={{marginRight:'20px',color:(this.state.switchIndex=='CSS') ? "red" : "black"}} onClick={this.handleClick}>CSS</span>
+                       </h1>
+            }
+        }
+
         class ContentItem extends React.Component{
                 constructor(props){
                     super(props);
                     this.state={repos:[]};
                 }
-                async componentDidMount() {
-                    const  res = await axios.get('https://api.github.com/search/repositories?q=stars:%3E1&sort=stars&order=desc&type=Repositories&page=1');
-                    this.setState({
+                handleGetMsg = async(value) => {
+                   
+                    if(value=='ALL'){
+                        const  res =await  axios.get('https://api.github.com/search/repositories?q=stars:%3E1&sort=stars&order=desc&type=Repositories&page=1');
+                        this.setState({
+                        repos:res.data.items
+                        });
+                    } 
+                    if(value=='JavaScript'){
+                        const  res = await axios.get('https://api.github.com/search/repositories?q=stars:%3E1+language:javascript&sort=stars&order=desc&type=Repositories&page=1');
+                        this.setState({
+                        repos:res.data.items
+                        });
+                    }
+                    if(value=='Ruby'){
+                        const  res =await  axios.get('https://api.github.com/search/repositories?q=stars:%3E1+language:ruby&sort=stars&order=desc&type=Repositories&page=1');
+                        this.setState({
+                        repos:res.data.items
+                        });
+                    }
+                    if(value=='java'){
+                        const  res =await  axios.get('https://api.github.com/search/repositories?q=stars:%3E1+language:ruby&sort=stars&order=desc&type=Repositories&page=1');
+                        this.setState({
                         repos:res.data.items
                     });
-                console.log(this.state.repos)
+                    }
+                    if(value=='CSS'){
+                        const  res =await  axios.get('https://api.github.com/search/repositories?q=stars:%3E1+language:java&sort=stars&order=desc&type=Repositories&page=1');
+                        this.setState({
+                        repos:res.data.items
+                        });
+                    }
+                    
                 }
                 render(){
                     const list = this.state.repos.map((item,key)=>
@@ -59,10 +113,14 @@
                 
                     );
                     
-                    return <div style={{display:'flex',flexWrap:'wrap',justifyContent: 'space-around'}}>
+                    return <div>
+                                <Switch getMsg={this.handleGetMsg} />
+                                <div style={{display:'flex',flexWrap:'wrap',justifyContent: 'space-around'}}>
                                
-                                {list}
+                                    {list}
+                                </div>
                            </div>
+                            
                 }
             }
 
@@ -70,7 +128,6 @@
                 
                 render(){
                     return <div>
-                           <h1 style={{textAlign:'center'}}><span style={{color:'red',marginRight:'20px'}}>ALL</span>JavaScript Ruby java CSS Pyphon</h1>
                             <ContentItem />
                            </div>
                 }
