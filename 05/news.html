@@ -190,7 +190,7 @@
             data = json.items;
             date = data;
             console.log(data[0].owner.avatar_url);
-            iconChange(data);
+            iconChange(1);
 
         })
         .catch(error => {
@@ -203,45 +203,41 @@
         let tow = document.getElementById('tow');
         let three = document.getElementById('three');
         let four = document.getElementById('four');
-        one.src = data[0].owner.avatar_url;
-        tow.src = data[1].owner.avatar_url;
-        three.src = data[2].owner.avatar_url;
-        four.src = data[3].owner.avatar_url;
         let index1 = index;
         console.log(index1);
         if (index1 !== 0) {
             if (index1 == 1) {
-                one.src = data[1].owner.avatar_url;
-                tow.src = data[1].owner.avatar_url;
-                three.src = data[2].owner.avatar_url;
-                four.src = data[3].owner.avatar_url;
+                one.src = date[0].owner.avatar_url;
+                tow.src = date[1].owner.avatar_url;
+                three.src = date[2].owner.avatar_url;
+                four.src = date[3].owner.avatar_url;
 
             }
             if (index1 == 2) {
-                one.src = data[4].owner.avatar_url;
-                tow.src = data[5].owner.avatar_url;
-                three.src = data[6].owner.avatar_url;
-                four.src = data[7].owner.avatar_url;
+                one.src = date[4].owner.avatar_url;
+                tow.src = date[5].owner.avatar_url;
+                three.src = date[6].owner.avatar_url;
+                four.src = date[7].owner.avatar_url;
 
             }
             if (index1 == 3) {
-                one.src = data[8].owner.avatar_url;
-                tow.src = data[9].owner.avatar_url;
-                three.src = data[10].owner.avatar_url;
-                four.src = data[11].owner.avatar_url;
+                one.src = date[8].owner.avatar_url;
+                tow.src = date[9].owner.avatar_url;
+                three.src = date[10].owner.avatar_url;
+                four.src = date[11].owner.avatar_url;
             }
             if (index1 == 4) {
-                one.src = data[12].owner.avatar_url;
-                tow.src = data[13].owner.avatar_url;
-                three.src = data[14].owner.avatar_url;
-                four.src = data[15].owner.avatar_url;
+                one.src = date[12].owner.avatar_url;
+                tow.src = date[13].owner.avatar_url;
+                three.src = date[14].owner.avatar_url;
+                four.src = date[15].owner.avatar_url;
 
             }
             if (index1 == 5) {
-                one.src = data[16].owner.avatar_url;
-                tow.src = data[17].owner.avatar_url;
-                three.src = data[18].owner.avatar_url;
-                four.src = data[19].owner.avatar_url;
+                one.src = date[16].owner.avatar_url;
+                tow.src = date[17].owner.avatar_url;
+                three.src = date[18].owner.avatar_url;
+                four.src = date[19].owner.avatar_url;
             }
         }
     }
@@ -249,6 +245,50 @@
     function details() {
         window.location.href = 'dynamic.html';
     }
+    // onload是等所有的资源文件加载完毕以后再绑定事件
+window.onload = function(){
+	// 获取图片列表，即img标签列表
+	var imgs = document.querySelectorAll('img');
+
+	// 获取到浏览器顶部的距离
+	function getTop(e){
+		return e.offsetTop;
+	}
+
+	// 懒加载实现
+	function lazyload(imgs){
+		// 可视区域高度
+		var h = window.innerHeight;
+		//滚动区域高度
+		var s = document.documentElement.scrollTop || document.body.scrollTop;
+		for(var i=0;i<imgs.length;i++){
+			//图片距离顶部的距离大于可视区域和滚动区域之和时懒加载
+			if ((h+s)>getTop(imgs[i])) {
+				// 真实情况是页面开始有2秒空白，所以使用setTimeout定时2s
+				(function(i){
+					setTimeout(function(){
+						// 不加立即执行函数i会等于9
+						// 隐形加载图片或其他资源，
+						//创建一个临时图片，这个图片在内存中不会到页面上去。实现隐形加载
+						var temp = new Image();
+						temp.src = imgs[i].getAttribute('data-src');//只会请求一次
+						// onload判断图片加载完毕，真是图片加载完毕，再赋值给dom节点
+						temp.onload = function(){
+							// 获取自定义属性data-src，用真图片替换假图片
+							imgs[i].src = imgs[i].getAttribute('data-src')
+						}
+					},2000)
+				})(i)
+			}
+		}
+	}
+	lazyload(imgs);
+
+	// 滚屏函数
+	window.onscroll =function(){
+		lazyload(imgs);
+	}
+}
 </script>
 
 </html>
