@@ -95,13 +95,13 @@
                 render(){
                     const list = this.state.repos.map((item,key)=>
                     
-                            <div style={{backgroundColor:'#EBEBEB',width:'23%',display:'flex',flexDirection:'column', alignItems:'center', justifyContent: 'center',margin:'1% 1%',}}> 
+                            <div style={{backgroundColor:'#EBEBEB',width:'23%',display:'flex',flexDirection:'column', alignItems:'center', justifyContent: 'center',margin:'1% 1%'}}> 
                                 <h2>#{key}</h2>
                                 <div style={{margin:'0 auto',display:' inline-block',textAlign:'center',width:'100%'}}>
                                     <img style={{width:'50%',}} src={item.owner.avatar_url} />
                                 </div>
                                 <div style={{color:'red',fontWeight:'600'}}>{item.owner.login}</div>
-                                <div>
+                                <div style={{width:'100%',paddingLeft:'10px'}}>
                                 <ul class="fa-ul">
                                     <li><i class="fa-li fa fa-book"></i>{item.owner.login}</li>
                                     <li><i class="fa-li fa fa-check-square"></i>{item.watchers}</li>
