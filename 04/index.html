@@ -41,7 +41,7 @@
         <div>
             <div class="conter"></div>
         </div>
-        <input type="text" />
+        <input id="input" type="text" />
         <div class="btn">
             <button class="launch" id="btn1">发射</button>
             <button class="clear">清屏</button>
@@ -75,6 +75,8 @@
     }
     clear.onclick = function () {
         conter.innerHTML = '';
+        let  a =document.getElementById('input');
+        a.value='';
     }
 </script>
 
