@@ -44,11 +44,11 @@
             }
             render(){
                 return <h1 style={{textAlign:'center'}}>
-                         <span style={{marginRight:'20px',color:(this.state.switchIndex=='ALL') ? "red" : "black"}} onClick={this.handleClick}>ALL</span>
-                         <span style={{marginRight:'20px',color:(this.state.switchIndex=='JavaScript') ? "red" : "black"}} onClick={this.handleClick}>JavaScript</span>
-                         <span style={{marginRight:'20px',color:(this.state.switchIndex=='Ruby') ? "red" : "black"}} onClick={this.handleClick}>Ruby</span>
-                         <span style={{marginRight:'20px',color:(this.state.switchIndex=='java') ? "red" : "black"}} onClick={this.handleClick}>java</span>
-                         <span style={{marginRight:'20px',color:(this.state.switchIndex=='CSS') ? "red" : "black"}} onClick={this.handleClick}>CSS</span>
+                         <span style={{marginRight:'20px',cursor: 'default',color:(this.state.switchIndex=='ALL') ? "red" : "black"}} onClick={this.handleClick}>ALL</span>
+                         <span style={{marginRight:'20px',cursor: 'default',color:(this.state.switchIndex=='JavaScript') ? "red" : "black"}} onClick={this.handleClick}>JavaScript</span>
+                         <span style={{marginRight:'20px',cursor: 'default',color:(this.state.switchIndex=='Ruby') ? "red" : "black"}} onClick={this.handleClick}>Ruby</span>
+                         <span style={{marginRight:'20px',cursor: 'default',color:(this.state.switchIndex=='java') ? "red" : "black"}} onClick={this.handleClick}>java</span>
+                         <span style={{marginRight:'20px',cursor: 'default',color:(this.state.switchIndex=='CSS') ? "red" : "black"}} onClick={this.handleClick}>CSS</span>
                        </h1>
             }
         }
