@@ -30,7 +30,31 @@
         flex-direction: column;
         align-items: center;
     }
+    @media screen and (max-width:653px) {
+    .iframeHight{
+      height: 1590.640px;
+    }
+    
+  }
 
+  @media screen and (max-width:894px) and  (min-width:654px) {
+    .iframeHight{
+      height: 640px;
+    }
+    
+  }
+  @media screen and (max-width:910px) and  (min-width:894px) {
+    .iframeHight{
+      height: 640px;
+    }
+    
+  }
+  @media screen and   (min-width:911px) {
+    .iframeHight{
+      height: 640px;
+    }
+    
+  }
 </style>
 <body>
     <iframe src="head.html" style="margin-bottom: -5px;" scrolling="no" frameborder="0" height="80px" id="mainFrame" width="100%"></iframe>
@@ -48,7 +72,7 @@
             <p class="centen-text"  style="width: 50%;margin: 20px 0 40px 0;text-indent: 2rem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus necessitatibus voluptate fuga reprehenderit esse natus iure placeat, repudiandae incidunt nemo?</p>
          </div>
     </div>
-    <iframe src="foot.html" style="margin-bottom: -5px;" scrolling="no" frameborder="0" height="480px" id="mainFrame" width="100%"></iframe>
+    <iframe class="iframeHight" src="foot.html" style="margin-bottom: -5px;" scrolling="no" frameborder="0" height="480px" id="mainFrame" width="100%"></iframe>
 
 </body>
 </html>
