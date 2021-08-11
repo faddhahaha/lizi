@@ -4,6 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <title>foot</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous">
+  </script>
 </head>
 <style>
   * {
@@ -14,7 +22,7 @@
   .foot {
     background-color: #D7D7D7;
     width: 100%;
-   
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,7 +38,7 @@
   .center {
     width: 100%;
     display: flex;
-    justify-content:space-around;
+    justify-content: space-around;
     flex-wrap: wrap;
   }
 
@@ -41,67 +49,54 @@
     flex-direction: column;
     align-items: center;
   }
+
   @media screen and (max-width:636px) {
     .center-item {
-    margin-top: 50px;
-    margin-right: 10px;
-    
-    width: 50%;
-    flex-wrap: wrap;
+      margin-top: 50px;
+      margin-right: 10px;
+      width: 30%;
+      flex-wrap: wrap;
+    }
+
+    .center-item>img {
+      width: 30%;
+    }
+
+    .code {
+      width: 40%;
+    }
+
+    .code>img {
+      width: 50%;
+    }
   }
-  .center-item >img {
-    width:50%;
-  }
-  .code{
-    width:50%;
-  }
-  .code>img{
-    width:50%;
-  }
-  }
-  /* @media screen and (max-width:815px) and(min-width:600px) {
-    .center-item {
-    margin-top: 50px;
-    margin-right: 10px;
-    
-    width: 100%;
-    flex-wrap: wrap;
-  }
-  .center-item >img {
-    width:100%;
-  }
-  .code{
-    width:100%;
-  }
-  .code>img{
-    width:100%;
-  }
-  } */
 
   @media screen and (max-width:653px) {
-    .foot{
-      height: 1590.640px;
+    .foot {
+      height: 400.640px;
     }
-    
+
   }
 
-  @media screen and (max-width:894px) and  (min-width:654px) {
-    .foot{
-      height: 640px;
+  @media screen and (max-width:894px) and (min-width:654px) {
+    .foot {
+      height: 400px;
     }
-    
+
   }
-  @media screen and (max-width:910px) and  (min-width:894px) {
-    .foot{
-      height: 640px;
+
+  @media screen and (max-width:910px) and (min-width:894px) {
+    .foot {
+      height: 400px;
     }
-    
+
   }
-  @media screen and   (min-width:911px) {
-    .foot{
-      height: 640px;
+
+  @media screen and (min-width:911px) {
+    .foot {
+      height: 400px;
     }
-    
+
   }
 </style>
 
@@ -109,19 +104,19 @@
   <div class="foot">
     <div class="center">
       <div class="center-item">
-        <img style="width: 100%;margin-bottom: 10px;" src="地图，位置，定位.svg" alt="" />
+        <img style="width: 80%;margin-bottom: 10px;" src="地图，位置，定位.svg" alt="" />
         <span>位置</span>
       </div>
       <div class="center-item">
-        <img  style="width: 100%;margin-bottom: 10px;" src="信.svg" alt="" />
+        <img style="width: 80%;margin-bottom: 10px;" src="信.svg" alt="" />
         <span>邮箱地址</span>
       </div>
       <div class="center-item">
-        <img style="width: 100%;margin-bottom: 10px;" src="客服.svg" alt="" />
+        <img style="width: 80%;margin-bottom: 10px;" src="客服.svg" alt="" />
         <span>客服电话</span>
       </div>
-      <div class="code"  style="display: flex;flex-direction:column ; text-align: center;margin: 20px 0;">
-        <img style="width: 100%;"   src="二维码.webp" alt="" />
+      <div class="code" style="display: flex;flex-direction:column ; text-align: center;margin: 20px 0;">
+        <img style="width: 100%;" src="二维码.webp" alt="" />
         <span>扫一扫，加入我们</span>
       </div>
     </div>

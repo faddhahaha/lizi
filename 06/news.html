@@ -40,7 +40,7 @@
     }
 
     .centen {
-        display: flex;
+        display: flex; 
         justify-content: center;
         flex-wrap: wrap;
         margin: 40px 80px;
@@ -76,41 +76,53 @@
         margin: 20px;
     }
     @media screen and (max-width:653px) {
+        .center-title>p {
+            font-size: 20px !important;
+        }
     .iframeHight{
-      height: 1590.640px;
+      height: 400.640px;
+    }
+    .text>span{
+        font-size: 15px !important;
     }
     
   }
 
   @media screen and (max-width:894px) and  (min-width:654px) {
     .iframeHight{
-      height: 640px;
+      height: 400px;
     }
     
   }
   @media screen and (max-width:910px) and  (min-width:894px) {
     .iframeHight{
-      height: 640px;
+      height: 400px;
     }
     
   }
   @media screen and   (min-width:911px) {
     .iframeHight{
-      height: 640px;
+      height: 400px;
+    }
+    
+  }
+  @media screen and   (max-width:630px) {
+    .iframeHead{
+      height: 160px;
     }
     
   }
 </style>
 
 <body>
-    <iframe src="head.html" style="margin-bottom: -5px;" scrolling="no" frameborder="0" height="80px" id="mainFrame"
+    <iframe class="iframeHead" src="head.html" style="margin-bottom: -5px;" scrolling="no" frameborder="0" height="80px" id="mainFrame"
         width="100%"></iframe>
     <div class="center">
         <!-- 头部 -->
         <div class="center-title">
             <div class="center-title-icon"></div>
             <p style="font-size: 30px;font-weight: 650;margin-left: 20px;">最新动态</p>
-            <div style="width: 20px;margin-left: 20px;">
+            <div class="text" style="width: 20px;margin-left: 20px;">
                 <span style="font-size: 30px;font-weight: 800;">WHAT'S</span>
                 <span style="font-size: 48px;color: red;font-weight: 800;">NEW!</span>
             </div>
@@ -274,6 +286,22 @@
     function details() {
         window.location.href = 'dynamic.html';
     }
+    
 </script>
-
+<script>
+    function urlHtml() {
+        //获取url地址
+        var ts_href = window.location.href;
+        var ts_mainText = "";
+        //获取地址最后一个“/”的下标
+        var ts_indexof = ts_href.lastIndexOf("/");
+        //获取地址“/”之后的的内容
+        var ts_indexText = ts_href.substring(ts_indexof + 1);
+        //获取地址“.html”的下标
+        var ts_htmlBeforeText = ts_indexText.indexOf(".html");
+        //获取 “/”到".html"之间的内容
+        ts_mainText = ts_indexText.substring(0, ts_htmlBeforeText);
+        return ts_mainText;
+    }
+</script>
 </html>

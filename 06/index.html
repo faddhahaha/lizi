@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,151 +10,202 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-            integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous">
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous">
     </script>
     <title>Document</title>
 </head>
+
 <body>
-<iframe src="head.html" style="margin-bottom: -5px;" scrolling="no" frameborder="0" height="80px" id="mainFrame" width="100%"></iframe>
-<div class="container-fluid" >
-    <!-- 轮播图 -->
-    <div class="shuffling-figure">
-        <div class="swiper" >
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                </ol>
+    <iframe id="iframe1" class="iframeHead" src="head.html" style="margin-bottom: -5px;" scrolling="no" frameborder="0"
+        height="80px" id="mainFrame" width="100%"></iframe>
+    <div class="container-fluid" style="padding: 0;">
 
-                <div  class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <img style="width: 100%;" src="50d74eaf5f74fded531f2d4b60f2437c.jpeg" alt="...">
+        <!-- 轮播图 -->
+        <div class="shuffling-figure">
+            <div class="swiper">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    </ol>
+
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img style="width: 100%;" src="50d74eaf5f74fded531f2d4b60f2437c.jpeg" alt="...">
+                        </div>
+                        <div class="item">
+                            <img style="width: 100%" src="50d74eaf5f74fded531f2d4b60f2437c.jpeg" alt="...">
+                        </div>
+                        <div class="item">
+                            <img style="width: 100%" src="50d74eaf5f74fded531f2d4b60f2437c.jpeg" alt="...">
+                        </div>
                     </div>
-                    <div class="item">
-                        <img style="width: 100%" src="50d74eaf5f74fded531f2d4b60f2437c.jpeg" alt="...">
-                    </div>
-                    <div class="item">
-                        <img style="width: 100%" src="50d74eaf5f74fded531f2d4b60f2437c.jpeg" alt="...">
-                    </div>
+
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
-
-                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
             </div>
         </div>
-    </div>
-    <!-- 服务范围 -->
-    <div class="row">
-        <h1>服务范围</h1>
-    </div>
-    <div class="row" style="margin: 0 auto;background-color: #F4F4F4;">
-        <div class="col-lg-3 col-md-6 col-sm-12" style="display: flex;flex-direction: column;align-items: center;margin: 20px 0;">
-            <img style="width: 60%;" src="火星小黄鸭鸭.svg" alt="" />
-            <span style="font-size: 16px;font-weight: 650;">拯救地球</span>
+        <!-- 服务范围 -->
+        <div class="row">
+            <h1>服务范围</h1>
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-12" style="display: flex;flex-direction: column;align-items: center;margin: 20px 0;">
-            <img style="width: 60%;" src="火星洋葱葱.svg" alt="" />
-            <span style="font-size: 16px;font-weight: 650;">英雄合照</span>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12" style="display: flex;flex-direction: column;align-items: center;margin: 20px 0;">
-            <img  style="width: 60%;" src="火星狗蛋.svg" alt="" />
-            <span style="font-size: 16px;font-weight: 650;">寻找原石</span>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12" style="display: flex;flex-direction: column;align-items: center;margin: 20px 0;">
-            <img style="width: 60%;" src="火星锅盖.svg" alt="" />
-            <span style="font-size: 16px;font-weight: 650;">宇宙旅行</span>
-        </div>
-    </div>
-    <!-- 团队介绍 -->
-    <div class="row">
-        <h1>团队介绍</h1>
-    </div>
-    <div class="row" style="width: 80%;margin: 20px auto;">
-            <div class="col-lg-6 col-md-12" style="margin-bottom: 40px;">
-                        <img src="zzz.jpg" style="width:100% ;" alt="" />
+        <div class="row" style="background-color: #F4F4F4;">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6"
+                style="display: flex;flex-direction: column;align-items: center;margin: 20px 0;">
+                <img style="width: 40%;" src="火星小黄鸭鸭.svg" alt="" />
+                <span style="font-size: 16px;font-weight: 650;">拯救地球</span>
             </div>
-            <div class="col-lg-6 col-md-12" >
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6"
+                style="display: flex;flex-direction: column;align-items: center;margin: 20px 0;">
+                <img style="width: 40%;" src="火星洋葱葱.svg" alt="" />
+                <span style="font-size: 16px;font-weight: 650;">英雄合照</span>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6"
+                style="display: flex;flex-direction: column;align-items: center;margin: 20px 0;">
+                <img style="width: 40%;" src="火星狗蛋.svg" alt="" />
+                <span style="font-size: 16px;font-weight: 650;">寻找原石</span>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6"
+                style="display: flex;flex-direction: column;align-items: center;margin: 20px 0;">
+                <img style="width: 40%;" src="火星锅盖.svg" alt="" />
+                <span style="font-size: 16px;font-weight: 650;">宇宙旅行</span>
+            </div>
+        </div>
+        <!-- 团队介绍 -->
+        <div class="row">
+            <h1>团队介绍</h1>
+        </div>
+        <div class="row" style="width: 96%;margin: 20px 0;display: inline;text-align: center;padding-bottom: 20px;">
+          
+            <div class="col-lg-6 col-md-12" style="margin-bottom: 40px;padding-bottom: 20px;">
+                <img src="zzz.jpg" style="width:100% ;" alt="" />
+            </div>
+            <div class="col-lg-6 col-md-12"  style="height: 100%; display: flex;flex-direction: column;justify-content: space-between;">
+                
                 <h1 style="font-size: 30px;margin: 20px 0;">托尼 史塔克</h1>
-                <p >Lorem ipsum dolor sit amet, consectetur adipisicing elit. nemo placeat, maiores architecto aspernatur, enim esse provident adipisci sint minus soluta maxime exercitationem molestias officia hic aperiam facere beatae fuga?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. nemo placeat, maiores architecto
+                    aspernatur, enim esse provident adipisci sint minus soluta maxime exercitationem molestias officia
+                    hic aperiam facere beatae fuga?</p>
                 <div class="line" style="width: 60%;"></div>
                 <p class="text-foot">
-                       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum porro neque, inventore voluptatum maxime illum quis iure quam alias. Nam. 
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum porro neque, inventore voluptatum
+                    maxime illum quis iure quam alias. Nam.
                 </p>
             </div>
-           
-           
-    </div>
-    <div class="row" style="width: 80%;margin: 20px auto;">
-        <div class="col-lg-6 col-md-12" style="margin-bottom: 40px;">
-            <h1 style="font-size: 30px;margin: 20px 0;">美国队长</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. nemo placeat, maiores architecto aspernatur, enim esse provident adipisci sint minus soluta maxime exercitationem molestias officia hic aperiam facere beatae fuga?</p>
-            <div class="line" style="width: 60%;"></div>
-            <p class="text-foot">
-                   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum porro neque, inventore voluptatum maxime illum quis iure quam alias. Nam. 
-            </p>
-        </div>
-        <div class="col-lg-6 col-md-12">
-            <img src="xxx.jpg" style="width:100% ;" alt="" />
-            
-        </div>
-       
-       
-</div>
+                   
 
-<div class="row" style="width: 80%;margin: 20px auto;">
-    <div class="col-lg-6 col-md-12" style="margin-bottom: 40px;">
+        </div>
+        <div class="row" style="width: 96%;margin: 20px 0;display: inline;text-align: center;padding-bottom: 20px;">
+            <div class="col-lg-6 col-md-12" style="margin-bottom: 40px;padding-bottom: 20px;">
+                <h1 style="font-size: 30px;margin: 20px 0;">美国队长</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. nemo placeat, maiores architecto
+                    aspernatur, enim esse provident adipisci sint minus soluta maxime exercitationem molestias officia
+                    hic aperiam facere beatae fuga?</p>
+                <div class="line" style="width: 60%;"></div>
+                <p class="text-foot">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum porro neque, inventore voluptatum
+                    maxime illum quis iure quam alias. Nam.
+                </p>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <img src="xxx.jpg" style="width:100% ;" alt="" />
+
+            </div>
+
+
+        </div>
+
+        <div class="row" style="width: 96%;margin: 20px 0;display: inline;text-align: center;">
+            <div class="col-lg-6 col-md-12" style="margin-bottom: 40px;padding-top: 20px;">
                 <img src="ccc.jpg" style="width:100% ;" alt="" />
-    </div>
-    <div class="col-lg-6 col-md-12">
-        <h1 style="font-size: 30px;margin: 20px 0;">黑寡妇</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. nemo placeat, maiores architecto aspernatur, enim esse provident adipisci sint minus soluta maxime exercitationem molestias officia hic aperiam facere beatae fuga?</p>
-        <div class="line" style="width: 60%;"></div>
-        <p class="text-foot">
-               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum porro neque, inventore voluptatum maxime illum quis iure quam alias. Nam. 
-        </p>
-    </div>
-   
-   
-</div>
-    
-    <!-- 新闻动态 -->
-    <div class="row">
-        <h1>新闻动态</h1>
-    </div>
-    <div class="row" style="margin: 0 auto;">
-        <div class="col-lg-3 col-md-6 col-sm-12" style="display: flex;flex-direction: column;align-items: center;margin: 20px 0;">
-            <img style="width:100%;" src="vvv.jpg" />
-            <p style="font-weight: 600;font-size: 16px;"> Lorem ipsum dolor sit amet consectetur.</p>
-            <p class="new-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab blanditiis deleniti, ipsa tenetur possimus nisi perspiciatis eligendi atque magnam dicta!</p>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <h1 style="font-size: 30px;margin: 20px 0;">黑寡妇</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. nemo placeat, maiores architecto
+                    aspernatur, enim esse provident adipisci sint minus soluta maxime exercitationem molestias officia
+                    hic aperiam facere beatae fuga?</p>
+                <div class="line" style="width: 60%;"></div>
+                <p class="text-foot">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum porro neque, inventore voluptatum
+                    maxime illum quis iure quam alias. Nam.
+                </p>
+            </div>
+
+
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-12" style="display: flex;flex-direction: column;align-items: center;margin: 20px 0;">
-            <img style="width:100%;" src="vvv.jpg" alt="" />
-            <p style="font-weight: 600;font-size: 16px;"> Lorem ipsum dolor sit amet consectetur.</p>
-            <p class="new-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus reiciendis cum ea laudantium aspernatur. Non inventore at temporibus odit sit commodi numquam officia mollitia veritatis?</p>
+
+        <!-- 新闻动态 -->
+        <div class="row">
+            <h1>新闻动态</h1>
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-12" style="display: flex;flex-direction: column;align-items: center;margin: 20px 0;">
-            <img  style="width:100%;" src="vvv.jpg" alt="" />
-            <p style="font-weight: 600;font-size: 16px;"> Lorem ipsum dolor sit amet consectetur.</p>
-            <p class="new-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam autem tempora a porro ipsum cupiditate, mollitia nemo atque suscipit officiis nostrum tempore itaque odio consequatur recusandae voluptatibus. Unde, facere magni.</p>
+        <div class="row" >
+            <div class="col-lg-3 col-md-6 col-sm-12"
+                style="display: flex;flex-direction: column;align-items: center;margin: 20px 0;">
+                <img style="width:100%;" src="vvv.jpg" />
+                <p style="font-weight: 600;font-size: 16px;text-align: center;"> Lorem, ipsum dolor sit amet consectetur
+                    adipisicing elit. Iste, cum?</p>
+                <p class="new-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab blanditiis deleniti,
+                    ipsa tenetur possimus nisi perspiciatis eligendi atque magnam dicta!</p>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12"
+                style="display: flex;flex-direction: column;align-items: center;margin: 20px 0;">
+                <img style="width:100%;" src="vvv.jpg" alt="" />
+                <p style="font-weight: 600;font-size: 16px;text-align: center;">Lorem, ipsum dolor sit amet consectetur
+                    adipisicing elit. Iste, cum?</p>
+                <p class="new-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus reiciendis cum ea
+                    laudantium aspernatur. Non inventore at temporibus odit sit commodi numquam officia mollitia
+                    veritatis?</p>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12"
+                style="display: flex;flex-direction: column;align-items: center;margin: 20px 0;">
+                <img style="width:100%;" src="vvv.jpg" alt="" />
+                <p style="font-weight: 600;font-size: 16px;text-align: center;"> Lorem, ipsum dolor sit amet consectetur
+                    adipisicing elit. Iste, cum?</p>
+                <p class="new-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam autem tempora a
+                    porro ipsum cupiditate, mollitia nemo atque suscipit officiis nostrum tempore itaque odio
+                    consequatur recusandae voluptatibus. Unde, facere magni.</p>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12"
+                style="display: flex;flex-direction: column;align-items: center;margin: 20px 0;">
+                <img style="width:100%;" src="vvv.jpg" alt="" />
+                <p style="font-weight: 600;font-size: 16px;text-align: center;">Lorem, ipsum dolor sit amet consectetur
+                    adipisicing elit. Iste, cum?</p>
+                <p class="new-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus rem iusto ipsum
+                    quibusdam, blanditiis reprehenderit totam aperiam numquam fugiat, necessitatibus suscipit, cum ad
+                    explicabo perspiciatis quo optio harum facere natus? Excepturi, voluptate. Ex, mollitia autem?</p>
+            </div>
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-12" style="display: flex;flex-direction: column;align-items: center;margin: 20px 0;">
-            <img style="width:100%;" src="vvv.jpg" alt="" />
-            <p style="font-weight: 600;font-size: 16px;"> Lorem ipsum dolor sit amet consectetur.</p>
-            <p class="new-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus rem iusto ipsum quibusdam, blanditiis reprehenderit totam aperiam numquam fugiat, necessitatibus suscipit, cum ad explicabo perspiciatis quo optio harum facere natus? Excepturi, voluptate. Ex, mollitia autem?</p>
-        </div>
+
     </div>
-   
-</div>
-<iframe class="iframeHight" src="foot.html" style="margin-bottom: -4px;" scrolling="no" frameborder="0" height="480px" id="mainFrame" width="100%"></iframe>
+    <iframe class="iframeHight" src="foot.html" style="margin-bottom: -4px;" scrolling="no" frameborder="0"
+        height="480px" id="mainFrame" width="100%"></iframe>
 </body>
+<script>
+    function urlHtml() {
+        //获取url地址
+        var ts_href = window.location.href;
+        var ts_mainText = "";
+        //获取地址最后一个“/”的下标
+        var ts_indexof = ts_href.lastIndexOf("/");
+        //获取地址“/”之后的的内容
+        var ts_indexText = ts_href.substring(ts_indexof + 1);
+        //获取地址“.html”的下标
+        var ts_htmlBeforeText = ts_indexText.indexOf(".html");
+        //获取 “/”到".html"之间的内容
+        ts_mainText = ts_indexText.substring(0, ts_htmlBeforeText);
+        return ts_mainText;
+    }
+</script>
+
 </html>
