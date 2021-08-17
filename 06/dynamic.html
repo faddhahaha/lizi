@@ -1,100 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <title>Document</title>
 </head>
 <style>
-    *{
-        margin: 0;
-        padding: 0;
-    }
-    .center-title{
-        background-color:#F5F5F5 ;
-        display: flex;
+  * {
+    margin: 0;
+    padding: 0;
+  }
 
-    }
-    .center-title-icon{
-        width: 50px;
-        background-color:red ;
-        height: 60px;
-        clip-path: inset(10px 20px  20px 20px );
-        margin-left: 30px;
-    }
-    .centen{
+  .center-title {
+    background-color: #F5F5F5;
+    display: flex;
+
+  }
+  p{
+    text-indent: 3rem;
+    margin-bottom: 10px;
+  }
+  
+  .center-title-icon {
+    width: 50px;
+    background-color: red;
+    height: 60px;
+    clip-path: inset(10px 20px 20px 20px);
+    margin-left: 30px;
+  }
+
+  .centen {
+
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #img-box{
+    width: 90%;
     
-        margin-top: 40px ;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    @media screen and (max-width:653px) {
-    .iframeHight{
+  }
+  img{
+    width: 100%;
+    margin-bottom:40px;
+  }
+  @media screen and (max-width:653px) {
+    .iframeHight {
       height: 400.640px;
     }
-    
+
   }
 
-  @media screen and (max-width:894px) and  (min-width:654px) {
-    .iframeHight{
+  @media screen and (max-width:894px) and (min-width:654px) {
+    .iframeHight {
       height: 400px;
     }
-    
+
   }
-  @media screen and (max-width:910px) and  (min-width:894px) {
-    .iframeHight{
+
+  @media screen and (max-width:910px) and (min-width:894px) {
+    .iframeHight {
       height: 400px;
     }
-    
+
   }
-  @media screen and   (min-width:911px) {
-    .iframeHight{
+
+  @media screen and (min-width:911px) {
+    .iframeHight {
       height: 400px;
     }
-    
+
   }
-  @media screen and   (max-width:630px) {
-    .iframeHead{
+
+  @media screen and (max-width:630px) {
+    .iframeHead {
       height: 160px;
     }
-    
+
   }
 </style>
+
 <body>
-    <iframe class="iframeHead" src="head.html" style="margin-bottom: -5px;" scrolling="no" frameborder="0" height="80px" id="mainFrame" width="100%"></iframe>
-    <div class="center">
-        <div class="center-title">
-            <div class="center-title-icon"></div>
-            <div style="width:600px;margin-left: 20px;margin-top: 10px;">
-                <span style="font-size: 20px;"> <<蚁人>>再发行剧照 漫威第二阶段收官之作 7月17日北美上映</span>
-                <span style="font-size: 12px;color:#BDBDBD;">2017-12-10</span>
-            </div>
-         </div>
-         <div class="centen">
-            <img src="5.jpeg"  alt="" /> 
-            <p  style="width: 50%;margin: 20px 0;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat nostrum aspernatur, nobis neque error vitae optio tenetur harum laudantium, distinctio minus! Voluptatibus corporis est necessitatibus quasi delectus, nihil rem perferendis?</p>
-            <p class="centen-text"  style="width: 50%;margin: 20px 0 40px 0;text-indent: 2rem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus necessitatibus voluptate fuga reprehenderit esse natus iure placeat, repudiandae incidunt nemo?</p>
-         </div>
+  <iframe class="iframeHead" src="head.html" style="margin-bottom: -5px;" scrolling="no" frameborder="0" height="80px"
+    id="mainFrame" width="100%"></iframe>
+  <div class="center">
+    <div class="center-title">
+      <div class="center-title-icon"></div>
+      <div style="width:600px;margin-left: 20px;margin-top: 10px;">
+        <span style="font-size: 20px;" id="title-box">
+          
+        </span>
+        <span style="font-size: 12px;color:#BDBDBD;" id="time-box"></span>
+      </div>
     </div>
-    <iframe class="iframeHight" src="foot.html" style="margin-bottom: -5px;" scrolling="no" frameborder="0" height="480px" id="mainFrame" width="100%"></iframe>
+    <div class="centen">
+      <div id="img-box">
+          
+      </div>
+      <p style="width: 90%;margin: 20px 0;" id="content-box">
+      </p>
+    </div>
+  </div>
+  <iframe class="iframeHight" src="foot.html" style="margin-bottom: -5px;" scrolling="no" frameborder="0" height="480px"
+    id="mainFrame" width="100%"></iframe>
 
 </body>
 <script>
+  let id = location.search.split('?');
+  let newid = id[1];
+  console.log(newid);
+  fetch(
+      ` https://www.mxnzp.com/api/news/details?newsId=${newid}&app_id=hmrnkjtdhxjdtvhl&app_secret=L0FYK3BvYXBoNlliS3hmNC9TU05pdz09`,
+    ).then(response => {
+      return response.json()
+    })
+    .then(json => {
+      let data = json.data;
+      console.log(data);
+      let title=document.getElementById('title-box');
+      title.innerHTML=data.title;
+      let time =document.getElementById("time-box");
+      time.innerHTML =data.ptime;
+      let content = document.getElementById("content-box");
+      content.innerHTML =data.content.slice(41,-35);
+      console.log(data.content.slice(41,-35));
+      $('b').parent().css('text-indent','0');
+      let htmlIgm ='';
+      if(data.images.length){
+        for(var i=0;i<data.images.length;i++){
+        let url=data.images[i].imgSrc;
+        console.log(url);
+        htmlIgm +=`<img src='${url}' alt="" />`
+      }
+      $('#img-box').append(htmlIgm);
+      }
+      
+    }).catch(error => {
+
+      console.log(error);
+    })
+
   function urlHtml() {
-      //获取url地址
-      var ts_href = window.location.href;
-      var ts_mainText = "";
-      //获取地址最后一个“/”的下标
-      var ts_indexof = ts_href.lastIndexOf("/");
-      //获取地址“/”之后的的内容
-      var ts_indexText = ts_href.substring(ts_indexof + 1);
-      //获取地址“.html”的下标
-      var ts_htmlBeforeText = ts_indexText.indexOf(".html");
-      //获取 “/”到".html"之间的内容
-      ts_mainText = ts_indexText.substring(0, ts_htmlBeforeText);
-      return ts_mainText;
+    //获取url地址
+    var ts_href = window.location.href;
+    var ts_mainText = "";
+    //获取地址最后一个“/”的下标
+    var ts_indexof = ts_href.lastIndexOf("/");
+    //获取地址“/”之后的的内容
+    var ts_indexText = ts_href.substring(ts_indexof + 1);
+    //获取地址“.html”的下标
+    var ts_htmlBeforeText = ts_indexText.indexOf(".html");
+    //获取 “/”到".html"之间的内容
+    ts_mainText = ts_indexText.substring(0, ts_htmlBeforeText);
+    return ts_mainText;
   }
 </script>
+
 </html>

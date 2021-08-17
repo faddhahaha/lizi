@@ -22,6 +22,12 @@
         padding: 0;
     }
 
+    .row {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+
+    }
+
     #center-map {
         height: 400px;
         width: 90%;
@@ -72,18 +78,19 @@
         }
 
     }
-    @media screen and   (max-width:630px) {
-    .iframeHead{
-      height: 160px;
+
+    @media screen and (max-width:630px) {
+        .iframeHead {
+            height: 160px;
+        }
+
     }
-    
-  }
 </style>
 
 <body>
-    <iframe class="iframeHead" src="head.html" style="margin-bottom: -5px;" scrolling="no" frameborder="0" height="80px" id="mainFrame"
-        width="100%"></iframe>
-    <div class="container-fluid" style="margin: 40px 0;">
+    <iframe class="iframeHead" src="head.html" style="margin-bottom: -5px;" scrolling="no" frameborder="0" height="80px"
+        id="mainFrame" width="100%"></iframe>
+    <div class="container-fluid" style="margin: 40px 0;padding: 0;">
         <div class="row">
             <div class="col-lg-6 col-md-12" style="padding:0;">
                 <div id="center-map">
@@ -98,15 +105,15 @@
                         nihil!</p>
                     <div class="center-text-item" style="margin-top: 40px;">
                         <img src="地图，位置，定位.svg" alt="" style="width: 40px;" />
-                        <p style="margin-left: 20px;">福州市参山广场</p>
+                        <span id="location" style="margin-left: 20px;"></span>
                     </div>
                     <div class="center-text-item">
                         <img src="信.svg" alt="" style="width: 40px;" />
-                        <p style="margin-left: 20px;">admin@zzz.com</p>
+                        <span style="margin-left: 20px;">admin@zzz.com</span>
                     </div>
                     <div class="center-text-item">
                         <img src="客服.svg" alt="" style="width: 40px;" />
-                        <p style="margin-left: 20px;">121312145</p>
+                        <span style="margin-left: 20px;">121312145</span>
                     </div>
 
                 </div>
@@ -184,10 +191,18 @@
                     'content': '<img src="https://a.amap.com/jsapi_demos/static/resource/img/user.png" style="width:36px;height:36px"/>'
                 },
             });
+
             mapObj.addControl(geolocation);
             geolocation.getCurrentPosition();
             AMap.event.addListener(geolocation, 'complete', onComplete); //返回定位信息
+
             AMap.event.addListener(geolocation, 'error', onError); //返回定位出错信息
+            function onComplete(data) {
+                // data是具体的定位信息
+                let a = document.getElementById('location');
+                a.innerHTML = data.formattedAddress;
+
+            }
         });
 </script>
 <script type="text/javascript" src="https://webapi.amap.com/demos/js/liteToolbar.js"></script>
