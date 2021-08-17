@@ -64,6 +64,7 @@
         p.style.position = 'absolute';
         p.style.whiteSpace = 'nowrap'
         p.innerHTML = texts.value;
+        texts.value ='';
         p.style.left = `${600+p.offsetWidth}px`;
         p.style.color = `#${('00000' + (Math.random() * 0x1000000 << 0).toString(16)).substr(-6)} `;
        
