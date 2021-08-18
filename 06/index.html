@@ -18,10 +18,10 @@
     <title>Document</title>
 </head>
 
-<body>
-    <iframe id="iframe1" class="iframeHead" src="head.html" style="margin-bottom: -5px;" scrolling="no" frameborder="0"
+<body style="display: flex;flex-direction: column;">
+    <iframe id="iframe1" class="iframeHead" src="head.html" style="margin-bottom: -5px;flex:0 0 auto" scrolling="no" frameborder="0"
         height="80px" id="mainFrame" width="100%"></iframe>
-    <div class="container-fluid" style="padding: 0;">
+    <div class="container-fluid" style="padding: 0;flex: 1 0 auto;">
 
         <!-- 轮播图 -->
         <div class="shuffling-figure">
@@ -188,7 +188,7 @@
         </div>
 
     </div>
-    <iframe class="iframeHight" src="foot.html" style="margin-bottom: -4px;" scrolling="no" frameborder="0"
+    <iframe class="iframeHight" src="foot.html" style="margin-bottom: -4px;flex: 0 0 auto;" scrolling="no" frameborder="0"
         height="480px" id="mainFrame" width="100%"></iframe>
 </body>
 <script>

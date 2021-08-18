@@ -13,11 +13,13 @@
     margin: 0;
     padding: 0;
   }
-
+  html,body{
+    height: 100%;
+  }
   .center-title {
     background-color: #F5F5F5;
     display: flex;
-
+    align-items: center;
   }
   p{
     text-indent: 3rem;
@@ -25,11 +27,10 @@
   }
   
   .center-title-icon {
-    width: 50px;
+    margin-left: 10px;
+    width:15px;
+    height: 50px;
     background-color: red;
-    height: 60px;
-    clip-path: inset(10px 20px 20px 20px);
-    margin-left: 30px;
   }
 
   .centen {
@@ -38,6 +39,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  #title-box{
+    font-size: 22px;
   }
   #img-box{
     width: 90%;
@@ -50,6 +54,9 @@
   @media screen and (max-width:653px) {
     .iframeHight {
       height: 400.640px;
+    }
+    #title-box{
+      font-size: 15px;
     }
 
   }
@@ -83,17 +90,17 @@
   }
 </style>
 
-<body>
-  <iframe class="iframeHead" src="head.html" style="margin-bottom: -5px;" scrolling="no" frameborder="0" height="80px"
+<body style="display: flex;flex-direction: column;">
+  <iframe class="iframeHead" src="head.html" style="margin-bottom: -5px;flex:0 0 auto" scrolling="no" frameborder="0" height="80px"
     id="mainFrame" width="100%"></iframe>
-  <div class="center">
+  <div class="center" style="flex:1 0 auto">
     <div class="center-title">
       <div class="center-title-icon"></div>
-      <div style="width:600px;margin-left: 20px;margin-top: 10px;">
-        <span style="font-size: 20px;" id="title-box">
+      <div style="width:90%;margin-left: 20px;margin-top: 10px;">
+        <span  id="title-box">
           
         </span>
-        <span style="font-size: 12px;color:#BDBDBD;" id="time-box"></span>
+        <p style="font-size: 12px;color:#BDBDBD; text-indent:0;margin-top: 10px;" id="time-box"></p>
       </div>
     </div>
     <div class="centen">
@@ -104,7 +111,7 @@
       </p>
     </div>
   </div>
-  <iframe class="iframeHight" src="foot.html" style="margin-bottom: -5px;" scrolling="no" frameborder="0" height="480px"
+  <iframe class="iframeHight" src="foot.html" style="margin-bottom: -5px;flex:0 0 auto" scrolling="no" frameborder="0" height="480px"
     id="mainFrame" width="100%"></iframe>
 
 </body>
@@ -125,8 +132,7 @@
       let time =document.getElementById("time-box");
       time.innerHTML =data.ptime;
       let content = document.getElementById("content-box");
-      content.innerHTML =data.content.slice(41,-35);
-      console.log(data.content.slice(41,-35));
+      content.innerHTML =data.content.slice(41,-36);
       $('b').parent().css('text-indent','0');
       let htmlIgm ='';
       if(data.images.length){
