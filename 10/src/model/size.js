@@ -13,9 +13,10 @@ export default {
     state:initState,
     subscriptions:{},
     effects:{
-
+            
     },
     reducers:{
+        //尺码筛选
         changeSize(state,{payload}){ 
             state.map((item)=>{
                 if(item.name === payload){

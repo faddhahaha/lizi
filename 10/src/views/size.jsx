@@ -15,8 +15,25 @@ class Size extends Component {
             type: "size/changeSize",
             payload: e.target.innerText
         })
-
+        // this.sizeValue();
     }
+   
+    // sizeValue=()=>{
+    //     const { size,dispatch } = this.props;
+    //     console.log('初始化');
+    //     dispatch({
+    //         type:'commodityContent/sizeChange',
+    //         payload:size
+    //     })
+    // //    this.commodityRefresh()
+    // }
+    // commodityRefresh=()=>{
+    //     const {dispatch,commodityContent} =this.props;
+    //     dispatch({
+    //         type:"commodityContent/sizeSelection",
+    //         payload:commodityContent.commodityStore
+    //     })
+    // }
     render() {
         const { size } = this.props
         return (
@@ -66,5 +83,5 @@ class Size extends Component {
     }
 
 }
-const mapStaetToProps = ({ global, CommodityContent, size }) => ({ global, CommodityContent, size })
+const mapStaetToProps = ({ global, commodityContent, size }) => ({ global, commodityContent, size })
 export default connect(mapStaetToProps)(Size);

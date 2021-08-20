@@ -1,12 +1,4 @@
-:global .ant-drawer-header {
-  color: white;
-}
-.close {
-  color: #fff;
-  position: fixed;
-  width: 60px;
-  line-height: 60px;
-  left: -60px;
-  top: 0;
-  background-color: #1b1a20;
+
+.element ::-webkit-scrollbar{
+  display: none;
 }
