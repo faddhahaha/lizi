@@ -3,20 +3,22 @@
     padding: 0;
     font-size: 18px;
   }
-  html{
+  html,body{
     height: 100%;
+
   }
   .row{
     margin-left: 0 !important;
     margin-right: 0 !important;
     
   }
+  #two{
+    width: 1200px ;
+  }
   p{
     word-break:break-all
-  }
-  .container-fluid {
-     
-    .shuffling-figure {
+  } 
+   .shuffling-figure {
       width: 100%;
       margin: 0 auto;
     }
@@ -28,7 +30,7 @@
     }
   
 
-  }
+  
   .line {
     margin: 0 auto;
     margin-top: 120px;
@@ -57,24 +59,27 @@
       text-indent: 2rem;
       margin-top: 40px;
       
-  }
+    }
+    body>.container-fluid >#two{
+      width: 100%
+    }
   }
 
   @media screen and (max-width:894px) and  (min-width:654px) {
     .iframeHight{
-      height: 400px;
+      height: 430px;
     }
     
   }
   @media screen and (max-width:910px) and  (min-width:894px) {
     .iframeHight{
-      height: 400px;
+      height: 430px;
     }
     
   }
   @media screen and   (min-width:911px) {
     .iframeHight{
-      height: 400px;
+      height: 430px;
     }
     
   }
