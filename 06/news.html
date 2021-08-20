@@ -67,7 +67,7 @@
         text-align: center;
     }
 
-    .centen-text {}
+    
 
     .img-box {
         height: 240px;
@@ -192,10 +192,10 @@
         showValue(page);
     }
     window.onload = function () {
-
+    
         if (window.sessionStorage) {
             var value = window.sessionStorage.getItem("value");
-            if (value != "" || value != null) {
+            if ( value != null) {
                 let b = document.getElementById(`a${value}`);
                 b.style.pointerEvents = 'none';
                 b.style.color = 'red';
