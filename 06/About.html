@@ -202,8 +202,12 @@
             function onComplete(data) {
                 // data是具体的定位信息
                 let a = document.getElementById('location');
-                a.innerHTML = data.formattedAddress;
-
+                if(data.formattedAddress){
+                    a.innerHTML = data.formattedAddress;
+                }else{
+                    a.innerHTML='四川省成都市武侯区桂溪街道锦悦西路195号环球中心N5栋';
+                }
+                
             }
         });
 </script>
