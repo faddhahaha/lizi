@@ -161,7 +161,7 @@ class Battle extends Component{
                 </div>
                 <div style={{width:'100%'}}>
                   <button style={{padding:'8px 30px',marginLeft:'20px',display:(left && right) ? 'block' : 'none',margin:'0 auto'}} onClick={this.details.bind(this)}>
-                  <Link to='/Battle/relust'>Battle</Link>
+                    Battle
                   </button>
                 </div>
             </div>

@@ -92,7 +92,8 @@ class Popular extends Component {
                     style={{width: '100%',overflow:'hidden'}}
                 >
                     <div className='row'  style={{display:'flex',justifyContent:'space-around'}}>
-                        {date.map((item, index) => {
+                        zzzzz
+                        {date.map((item, index) => 
                             return (
                                 <div className="col-lg-3 col-sm-12 col-md-6 " key={index}  >
                                 <div style={{backgroundColor:'#EBEBEB',display:'flex',flexDirection:'column', alignItems:'center', justifyContent: 'center',margin:'1% 1%',}}> 

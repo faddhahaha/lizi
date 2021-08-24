@@ -53,7 +53,7 @@ class Relust extends Component{
     }
     RESET=()=>{
         window.history.back(-1);
-       
+        
     }
 
     render(){
