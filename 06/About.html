@@ -32,7 +32,7 @@
 
     #center-map {
         height: 400px;
-        width: 90%;
+        width: 100%;
         margin: 0 auto;
     }
 
@@ -87,19 +87,24 @@
         }
 
     }
+    @media (min-width:1200px){
+        .container{
+            width: 1200px;
+        }
+    }
 </style>
 
 <body style="display: flex;flex-direction: column">
     <iframe class="iframeHead" src="head.html" style="margin-bottom: -5px;flex:0 0 auto" scrolling="no" frameborder="0" height="80px"
         id="mainFrame" width="100%"></iframe>
-    <div class="container-fluid" style="margin: 40px 0;padding: 0;flex:1 0 auto">
+    <div class="container" style="margin: 40px auto;padding: 0;flex:1 0 auto">
         <div class="row">
             <div class="col-lg-6 col-md-12" style="padding:0;">
                 <div id="center-map">
 
                 </div>
             </div>
-            <div class="col-lg-6 col-md-12">
+            <div class="col-lg-6 col-md-12" style="padding:0 0 0 30px;">
                 <div class="center-text">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint magnam, et delectus quod tempore
                         voluptatibus assumenda quam eligendi consequatur quasi maiores inventore cumque, odit vero eaque

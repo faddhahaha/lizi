@@ -25,7 +25,7 @@
   
     h1 {
       font-size: 50px;
-      margin: 40px 0;
+      
       text-align: center;
     }
   
@@ -67,19 +67,19 @@
 
   @media screen and (max-width:894px) and  (min-width:654px) {
     .iframeHight{
-      height: 430px;
+      height: 400px;
     }
     
   }
   @media screen and (max-width:910px) and  (min-width:894px) {
     .iframeHight{
-      height: 430px;
+      height: 400px;
     }
     
   }
   @media screen and   (min-width:911px) {
     .iframeHight{
-      height: 430px;
+      height: 400px;
     }
     
   }
