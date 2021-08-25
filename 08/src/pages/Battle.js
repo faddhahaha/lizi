@@ -1,18 +1,24 @@
 import React,{Component} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Link} from 'react-router-dom'
+import { Button } from 'antd';
+// import { PoweroffOutlined } from '@ant-design/icons';
 class Battle extends Component{
     constructor(props){
         super(props);
         this.state={
             left:false,
             right:false,
-            valueleft:false,
-            valuerigth:false,
+            valueleft:true,
+            valuerigth:true,
+            btnleftvalue:false,
+            btnrightvalue:false,
             leftvalue:'',
             rightvalue:'',
             imgUrlLeft:'',
             imgUrlRight:'',
+            errorleft:'',
+            errorright:'',
+            
         }
     }
     details=()=>{
@@ -20,13 +26,19 @@ class Battle extends Component{
     }
     clearLeft=()=>{
         this.setState({
-            left:false
+            left:false,
+            imgUrlLeft:'',     
         }) 
+        let a =document.getElementsByClassName('inputleft')[0];
+        a.value='';
     }
     clearRight=()=>{
         this.setState({
-            right:false
+            right:false,
+            imgUrlRight:'',
         }) 
+        let a =document.getElementsByClassName('inputright')[0];
+        a.value='';
 
     }
     rightkeyUp = (e) => {
@@ -46,7 +58,7 @@ class Battle extends Component{
     changeLeft=(e)=>{
         if(e.target.value){
             this.setState({
-                valueleft:true,
+                valueleft:false,
                 leftvalue:e.target.value
             })
         }
@@ -54,23 +66,36 @@ class Battle extends Component{
     changeRight=(e)=>{
         if(e.target.value){
             this.setState({
-                valuerigth:true,
+                valuerigth:false,
                 rightvalue:e.target.value
             })
         }
     }
     requestVlaue=(page,both)=>{
+      
         if(both=='left'){
              let url = `https://api.github.com/users/${page}`
                 fetch(url).then(res => 
-                        res.json()
+                     res.json()       
                 )
                 .then(res=>{
-                    console.log(res);
+                   
                     this.setState({
-                        imgUrlLeft:res.avatar_url
+                        imgUrlLeft:res.avatar_url,
+                        btnleftvalue:false,
+                        valueleft:true,                 
                     })
-                }).catch(error=>console.log(error))
+                  if(res.message){
+                        this.setState({
+                            errorleft:res.message
+                        })
+                    }
+                }).catch(error=>{
+                   
+                    this.setState({
+                        btnleftvalue:false
+                    })
+                })
         }
         if(both=='right'){
             let url = `https://api.github.com/users/${page}`
@@ -78,28 +103,44 @@ class Battle extends Component{
                     res.json()
             )
             .then(res=>{
-                console.log(res);
+              
                 this.setState({
-                    imgUrlRight:res.avatar_url
+                    imgUrlRight:res.avatar_url,
+                    btnrightvalue:false,
+                    valuerigth:true, 
                 })
-            }).catch(error=>console.log(error))
+                if(res.message){
+                    this.setState({
+                        errorright:res.message
+                    })
+                }
+            }).catch(error=>{
+                this.setState({
+                    btnrightvalue:false
+                })
+               
+            })
         }
        
     }
     btnLeft=()=>{
         this.setState({
-            left:true
+            left:true,
+            btnleftvalue:true
         }) 
+       
        this.requestVlaue(this.state.leftvalue,'left');
     }
     btnRigth=()=>{
         this.setState({
-            right:true
+            right:true,
+            btnrightvalue:true
         }) 
         this.requestVlaue(this.state.rightvalue,'right');
     }
     render(){
-        const {left,right,valueleft,valuerigth,leftvalue,rightvalue,imgUrlRight,imgUrlLeft} =this.state;
+        const {errorleft,errorright,left,right,valueleft,valuerigth,leftvalue,rightvalue,imgUrlRight,imgUrlLeft,btnleftvalue,btnrightvalue} =this.state;
+    
         return(
             <div>
                 <h2 style={{textAlign:'center'}}>Instructions</h2>
@@ -128,9 +169,9 @@ class Battle extends Component{
                 <div style={{width:'90%',margin:'70px auto',display:'flex',justifyContent:'space-around'}}>
                 <div>
                         <p style={{fontWeight:'550',fontSize:'20px'}}>Player One</p>
-                        <input type="text" style={{width:'400px',lineHeight:'38px'}}  onChange={this.changeLeft}  placeholder="github username" onKeyUp={this.leftkeyUp}></input>
-                        <button style={{padding:'8px 20px',marginLeft:'20px'}}  disabled={valueleft?"":"disabled"} onClick={this.btnLeft} >Submit</button>
-                        <div style={{display: left ?'flex':"none",justifyContent:'space-between',alignItems:'center',width:'510px',height:'100px',background:'#DFDFDF',marginTop:'10px',borderRadius:'10px'}}>
+                        <input type="text" style={{width:'400px',lineHeight:'38px'}}  className="inputleft" onChange={this.changeLeft}  placeholder="github username" onKeyUp={this.leftkeyUp}></input>
+                        <Button   style={{marginLeft:'20px'}} type="primary" disabled={valueleft || btnleftvalue ||imgUrlLeft ?"disabled":""} onClick={this.btnLeft}  loading={btnleftvalue}>Submit</Button>
+                        <div style={{display: imgUrlLeft ?'flex':"none",justifyContent:'space-between',alignItems:'center',width:'510px',height:'100px',background:'#DFDFDF',marginTop:'10px',borderRadius:'10px'}}>
                             <div style={{display:'flex',justifyContent:'center',alignItems:'center'}} >
                             <div style={{width:'80px',height:'80px',margin:'0 20px'}}>
                                 <img style={{width:'100%',borderRadius:'10px'}} src={imgUrlLeft} />
@@ -141,12 +182,13 @@ class Battle extends Component{
                                 <i className="fa fa-times fa-3x" ></i>
                             </div>
                         </div>
+                        <p style={{display: errorleft ?'flex':"none"}}>{errorleft}</p>
                     </div>
                     <div >
                         <p style={{fontWeight:'550',fontSize:'20px'}}>Player Two</p>
-                        <input type="text" style={{width:'400px',lineHeight:'38px'}}  onChange={this.changeRight} placeholder="github username" onKeyUp={this.rightkeyUp}></input>
-                        <button style={{padding:'8px 20px',marginLeft:'20px'}} disabled={valuerigth ?"":"disabled"} onClick={this.btnRigth} >Submit</button>
-                        <div style={{display: right ?'flex':"none",justifyContent:'space-between',alignItems:'center',width:'510px',height:'100px',background:'#DFDFDF',marginTop:'10px',borderRadius:'10px'}}>
+                        <input type="text" style={{width:'400px',lineHeight:'38px'}} className="inputright"  onChange={this.changeRight} placeholder="github username" onKeyUp={this.rightkeyUp}></input>
+                        <Button style={{marginLeft:'20px'}} type="primary" disabled={ valuerigth || btnrightvalue || imgUrlRight  ?"disabled":""} onClick={this.btnRigth}  loading={btnrightvalue}>Submit</Button>
+                        <div style={{display: imgUrlRight ?'flex':"none",justifyContent:'space-between',alignItems:'center',width:'510px',height:'100px',background:'#DFDFDF',marginTop:'10px',borderRadius:'10px'}}>
                             <div style={{display:'flex',justifyContent:'center',alignItems:'center'}} >
                                 <div style={{width:'80px',height:'80px',margin:'0 20px'}}>
                                     <img style={{width:'100%',borderRadius:'10px'}} src={imgUrlRight} />
@@ -157,12 +199,13 @@ class Battle extends Component{
                                 <i className="fa fa-times fa-3x"></i>
                             </div>
                         </div>
+                        <p style={{display: errorright ?'flex':"none"}}>{errorright}</p>
                     </div>
                 </div>
                 <div style={{width:'100%'}}>
-                  <button style={{padding:'8px 30px',marginLeft:'20px',display:(left && right) ? 'block' : 'none',margin:'0 auto'}} onClick={this.details.bind(this)}>
+                  <Button style={{marginLeft:'20px',display:( imgUrlLeft && imgUrlRight) ? 'block' : 'none',margin:'0 auto'}} onClick={this.details.bind(this)}>
                     Battle
-                  </button>
+                  </Button>
                 </div>
             </div>
             ) ;

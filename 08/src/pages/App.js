@@ -2,7 +2,7 @@ import React,{Component,Suspense,lazy} from 'react';
 import Popular from './Popular';
 import {HashRouter,Route,Link,Redirect,Switch}  from  'react-router-dom';
 const  Battle=lazy(()=>import('./Battle'));
-import Relust from './relust';
+import Relust from '@/components/relust';
     class App extends Component {
         constructor(props){
             super(props);

@@ -14,7 +14,8 @@ module.exports = (env)=>{
             port: 3000,
             stats: {
                 colors: true
-            }
+            },
+            hot:true
         },
         entry: './src/index.js',  //添加入口配置项
         output:{
@@ -25,7 +26,8 @@ module.exports = (env)=>{
         resolve: {
             extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx'],
             alias: {
-                'jquery': 'jquery' 
+                'jquery': 'jquery' ,
+                '@':path.resolve(__dirname,'src/')
               }
         },
         module: {
@@ -82,7 +84,8 @@ module.exports = (env)=>{
                 $: "jquery",
                 jQuery: "jquery",
                 "windows.jQuery": "jquery"
-              })  
-        ]
+              }),
+            new webpack.HotModuleReplacementPlugin() 
+        ],
     };
 }

@@ -8,6 +8,7 @@ class Relust extends Component{
         this.state={
             player1:'',
             player2:'',
+            active:false
         }
     }
      async componentDidMount(){
@@ -15,6 +16,14 @@ class Relust extends Component{
         let b =a[1].split('&');
         let player2=b[1].split("=")[1];
         let player1=b[0].split("=")[1];
+        if(player2===player1){
+            this.setState({
+                active:true
+            })
+        }
+        if(!player1 || !player2){
+            window.location.hash='#/Battle'
+        }
         let player1Url=`https://api.github.com/users/${player1}`;
         let player2Url=`https://api.github.com/users/${player2}`;
        
@@ -66,7 +75,7 @@ class Relust extends Component{
             <div style={{display:'flex',width:'100%',justifyContent:'space-around',height:'500px'}}>
 
                <div style={{width:'20%',backgroundColor:'#EBEBEB',display:'flex',flexDirection:'column', alignItems:'center', justifyContent: 'center',margin:'1% 1%',}}> 
-                                    <h2 style={{margin:'10px 0'}}>Winner</h2>
+                                    <h2 style={{margin:'10px 0'}}>{this.state.active?"Draw":"Winner"}</h2>
                                     <div style={{margin:'0 auto',display:' inline-block',textAlign:'center',width:'100%'}}>
                                         <img style={{width:'150px'}} src={player1.avatar_url} />
                                     </div>
@@ -82,7 +91,7 @@ class Relust extends Component{
                                     </div>  
                 </div>
                 <div style={{width:'20%',backgroundColor:'#EBEBEB',display:'flex',flexDirection:'column', alignItems:'center', justifyContent: 'center',margin:'1% 1%',}}> 
-                                    <h2 style={{margin:'10px 0'}}>Loser</h2>
+                                    <h2 style={{margin:'10px 0'}}>{this.state.active?"Draw":"Lost"}</h2>
                                     <div style={{margin:'0 auto',display:' inline-block',textAlign:'center',width:'100%'}}>
                                         <img style={{width:'150px'}} src={player2.avatar_url} />
                                     </div>
