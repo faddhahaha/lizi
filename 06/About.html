@@ -82,9 +82,9 @@
     }
 
     @media screen and (max-width:630px) {
-        .iframeHead {
+        /* .iframeHead {
             height: 160px;
-        }
+        } */
 
     }
     @media (min-width:1200px){
@@ -95,8 +95,9 @@
 </style>
 
 <body style="display: flex;flex-direction: column">
-    <iframe class="iframeHead" src="head.html" style="margin-bottom: -5px;flex:0 0 auto" scrolling="no" frameborder="0" height="80px"
-        id="mainFrame" width="100%"></iframe>
+    <iframe id="iframe1" class="iframeHead" src="head.html" style="margin-bottom: -5px;flex:0 0 auto;overflow:visible;"
+   	scrolling="no" scrolling="no" frameborder="0" height="100%"  width="100%" onload="reinitIframe()">
+    </iframe>
     <div class="container" style="margin: 40px auto;padding: 0;flex:1 0 auto">
         <div class="row">
             <div class="col-lg-6 col-md-12" style="padding:0;">
@@ -146,6 +147,21 @@
         ts_mainText = ts_indexText.substring(0, ts_htmlBeforeText);
         return ts_mainText;
     }
+    window.onresize = function () {
+            reinitIframe();
+        }
+        function reinitIframe(){
+            var iframe = document.getElementById("iframe1");
+            try{
+                var bHeight = iframe.contentWindow.document.body.scrollHeight;
+                var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+                var height = Math.min(bHeight, dHeight);
+                iframe.height = height;
+                // console.log(iframe.height);
+            }catch (ex){}
+        }
+        // 定时触发
+        window.setInterval("reinitIframe()", 200);
 </script>
 <script src="https://webapi.amap.com/maps?v=1.4.2&key=fcab80f24801649871ab7852bb556cc7"></script>
 <script type="text/javascript">

@@ -20,9 +20,9 @@
 </head>
 
 <body style="display: flex;flex-direction: column;">
-    <iframe id="iframe1" class="iframeHead" src="head.html" style="margin-bottom: -5px;flex:0 0 auto" scrolling="no" frameborder="0"
-        height="80px" id="mainFrame" width="100%"></iframe>
-
+    <iframe id="iframe1" class="iframeHead" src="head.html" style="margin-bottom: -5px;flex:0 0 auto;overflow:visible;"
+   	scrolling="no" scrolling="no" frameborder="0" height="100%"  width="100%" onload="reinitIframe()">
+    </iframe>
     <div class="container-fluid" style="padding: 0;flex: 1 0 auto;margin: 0;">
 
         <!-- 轮播图 -->
@@ -192,7 +192,7 @@
     </div>
     </div>
     <iframe class="iframeHight" src="foot.html" style="margin-bottom: -4px;flex: 0 0 auto;" scrolling="no" frameborder="0"
-        height="480px" id="mainFrame" width="100%"></iframe>
+        height="480px"  width="100%"></iframe>
 </body>
 <script>
     function urlHtml() {
@@ -209,6 +209,22 @@
         ts_mainText = ts_indexText.substring(0, ts_htmlBeforeText);
         return ts_mainText;
     }
+    window.onresize = function () {
+            reinitIframe();
+        }
+        function reinitIframe(){
+            var iframe = document.getElementById("iframe1");
+            try{
+                var bHeight = iframe.contentWindow.document.body.scrollHeight;
+                var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+                var height = Math.min(bHeight, dHeight);
+                iframe.height = height;
+                // console.log(iframe.height);
+            }catch (ex){}
+        }
+        // 定时触发
+        window.setInterval("reinitIframe()", 200);
+
 </script>
 
 </html>
