@@ -23,14 +23,15 @@
         class Switch extends React.Component{
             constructor(props){
                 super(props);
-                this.state={switchIndex:'ALL'}
+                this.state={switchIndex:''}
             }
             componentDidMount() {
                 this.props.getMsg('ALL');
             }
             handleClick = (e) => {
-                
+                window.history.replaceState({path: ''}, '', "?page=" +e.target.innerText)
 
+                     
                 this.setState({
                     switchIndex:e.target.innerText
                 });
@@ -52,6 +53,8 @@
                 constructor(props){
                     super(props);
                     this.state={
+                        errorvalue:'',
+                        error:false,
                         data:[],
                         isScroll:false,
                         value:'',
@@ -82,13 +85,12 @@
                
                 loadMoreData = (value) => {
                     const { pageUrl,page } = this.state;
-                   
                     let page1=value+1;
                     this.getData(`${pageUrl}&page=${page1}`,page1)
                 }
                 //获取数据
                 getData = (url = this.state.url[this.state.switchIndex],page1) => {
-                   
+                    debugger
                     let { data } = this.state
                     fetch(url).then(res => res.json())
                     .then(res => {
@@ -103,12 +105,18 @@
                         
                     }) 
                     .catch(e => { 
-                        console.log(e)
+                        console.log(e.message)
+                        this.setState({
+                            error:true,
+                            errorvalue:e.message
+                        })
+                        
                     })
     
                 }
                 //切换
                 handleGetMsg =(value) => {
+                    
                     console.log(value);
                     this.setState({
                         switchIndex:value,
@@ -145,8 +153,10 @@
                     
                     return <div >
                                 <Switch getMsg={this.handleGetMsg} />
+                                        
+                                
                                 <div style={{display:'flex',flexWrap:'wrap',justifyContent: 'space-around'}}>
-                                    {list}
+                                    {this.state.error ?this.state.errorvalue :list}
                                 </div>
                                 <div  style={{width:'100%',display:this.state.isScroll?"flex":'none',justifyContent:'center'}}  >
                                     <button style={{display:'inline-block',width:'50%',height:'30px'}} onClick={()=>this.loadMoreData(this.state.page)}> 下一页</button>    
