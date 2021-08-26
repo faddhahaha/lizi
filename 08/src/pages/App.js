@@ -12,7 +12,7 @@ class App extends Component {
         this.setState({
             navigationValue:value
         })
-    }
+    };
     render(){
         const {navigationValue} =this.state;
         return(
