@@ -28,7 +28,7 @@ class Relust extends Component{
             window.location.hash='#/Battle'
         } 
         if(player2===player1 ){
-            this.setState(
+            this.setState({
                 active:true
             })
         }
@@ -36,12 +36,11 @@ class Relust extends Component{
         let player2Url=`https://api.github.com/users/${player2}`;
        
         this.request(player1Url,player2Url);
-        console.log(this.state.plater2Value);
-        console.log(this.state.plater1Value);
-
+        
+        
     }
-    request=(url1,url2)=>{
-        fetch(url2).then(res => 
+   async request(url1,url2){
+    let first =  await fetch(url2).then(res => 
             res.json()
         )
         .then(res=>{
@@ -49,9 +48,9 @@ class Relust extends Component{
                 plater2Value:res
             })
            
-            console.log(res)
+            
         })
-        fetch(url1).then(res => 
+        let first2=  await   fetch(url1).then(res => 
             res.json()
         )
         .then(res=>{
@@ -61,10 +60,11 @@ class Relust extends Component{
            
             console.log(res)
         })
+        this.judge()
     }
     judge=()=>{
          const {plater2Value,plater1Value}=this.state;
-         if(plater2Value && plater1Value ){
+        
             if(plater2Value.public_repos>plater1Value.public_repos){
                 this.setState({
                     player1:plater2Value,
@@ -83,7 +83,7 @@ class Relust extends Component{
                     active:true
                 })
             }
-        }
+       
       
        
         
@@ -101,7 +101,7 @@ class Relust extends Component{
                 
             <div style={{display:'flex',width:'100%',justifyContent:'space-around',height:'500px'}}>
 
-               <div style={{width:'20%',backgroundColor:'#EBEBEB',display:'flex',flexDirection:'column', alignItems:'center', justifyContent: 'center',margin:'1% 1%',}}> 
+               <div style={{width:'20%',backgroundColor:'#EBEBEB',display:'flex',flexDirection:'column', alignItems:'center', justifyContent: 'center',margin:'1% 1%'}}> 
                                     <h2 style={{margin:'10px 0'}}>{this.state.active?"Draw":"Winner"}</h2>
                                     <div style={{margin:'0 auto',display:' inline-block',textAlign:'center',width:'100%'}}>
                                         <img style={{width:'150px'}} src={player1.avatar_url} />
@@ -117,7 +117,7 @@ class Relust extends Component{
                                         </ul>
                                     </div>  
                 </div>
-                <div style={{width:'20%',backgroundColor:'#EBEBEB',display:'flex',flexDirection:'column', alignItems:'center', justifyContent: 'center',margin:'1% 1%',}}> 
+                <div style={{width:'20%',backgroundColor:'#EBEBEB',display:'flex',flexDirection:'column', alignItems:'center', justifyContent: 'center',margin:'1% 1%'}}> 
                                     <h2 style={{margin:'10px 0'}}>{this.state.active?"Draw":"Lost"}</h2>
                                     <div style={{margin:'0 auto',display:' inline-block',textAlign:'center',width:'100%'}}>
                                         <img style={{width:'150px'}} src={player2.avatar_url} />

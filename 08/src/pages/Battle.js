@@ -17,17 +17,17 @@ class Battle extends Component{
             imgUrlLeft:'',
             imgUrlRight:'',
             errorleft:'',
-            errorright:'',
+            errorright:''
             
         }
     }
-    details=()=>{
+    details = ()=>{
         this.props.history.push(`/Battle/relust?player1=${this.state.leftvalue}&player2=${this.state. rightvalue}`);
     }
     clearLeft=()=>{
         this.setState({
             left:false,
-            imgUrlLeft:'',     
+            imgUrlLeft:''     
         }) 
         let a =document.getElementsByClassName('inputleft')[0];
         a.value='';
@@ -35,7 +35,7 @@ class Battle extends Component{
     clearRight=()=>{
         this.setState({
             right:false,
-            imgUrlRight:'',
+            imgUrlRight:''
         }) 
         let a =document.getElementsByClassName('inputright')[0];
         a.value='';
@@ -90,7 +90,7 @@ class Battle extends Component{
                         imgUrlLeft:res.avatar_url,
                         btnleftvalue:false,
                         valueleft:true, 
-                        errorleft:false,                
+                        errorleft:false                
                     })
                   if(res.message){
                         this.setState({
