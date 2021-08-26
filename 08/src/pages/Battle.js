@@ -193,7 +193,7 @@ class Battle extends Component{
                         <p style={{display: errorleft ?'flex':"none"}}>{errorleft}</p>
                     </div>
                     <div >
-                        p style={{fontWeight:'550',fontSize:'20px'}}>Player Two</p>
+                        <<p style={{fontWeight:'550',fontSize:'20px'}}>Player Two</p>
                         <input type="text" style={{width:'400px',lineHeight:'38px'}} className="inputright"  onChange={this.changeRight} placeholder="github username" onKeyUp={this.rightkeyUp}></input>
                         <Button style={{marginLeft:'20px'}} type="primary" disabled={ valuerigth || btnrightvalue || imgUrlRight  ?"disabled":""} onClick={this.btnRigth}  loading={btnrightvalue}>Submit</Button>
                         <div style={{display: imgUrlRight ?'flex':"none",justifyContent:'space-between',alignItems:'center',width:'510px',height:'100px',background:'#DFDFDF',marginTop:'10px',borderRadius:'10px'}}>
