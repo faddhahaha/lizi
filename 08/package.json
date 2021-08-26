@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf dist && webpack --env NODE_ENV=production",
     "start": "webpack-dev-server --env NODE_ENV=development --open",
-    "deploy": "gh-pages -d dist -e 08"
+    "deploy": "gh-pages -d dist -e 08",
+    "lint": "eslint --fix src"
   },
   "keywords": [],
   "author": "",
@@ -39,6 +40,7 @@
     "husky": "^7.0.1",
     "jquery": "^2.2.3",
     "lint-staged": "^11.1.2",
+    "pre-commit": "^1.2.2",
     "prettier": "^2.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -46,16 +48,5 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "src/**": [
-      "prettier --config .prettierrc --write",
-      "eslint --fix",
-      "git add"
-    ]
-  }
+  "pre-commit": "lint"
 }

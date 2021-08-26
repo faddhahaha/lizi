@@ -44,21 +44,26 @@ class Battle extends Component{
     rightkeyUp = (e) => {
         if (e.keyCode === 13) {
            this.setState({
-            right:true
+            right:true,
+            btnrightvalue:true
            })
+        this.requestVlaue(this.state.rightvalue,'right');
         }
     };
     leftkeyUp = (e) => {
         if (e.keyCode === 13) {
            this.setState({
-            left:true
+            left:true,
+            btnleftvalue:true
            })
+        this.requestVlaue(this.state.leftvalue,'left');
         }
     };
     changeLeft=(e)=>{
         if(e.target.value){
             this.setState({
                 valueleft:false,
+                errorleft:false,
                 leftvalue:e.target.value
             })
         }
@@ -67,6 +72,7 @@ class Battle extends Component{
         if(e.target.value){
             this.setState({
                 valuerigth:false,
+                errorright:false,
                 rightvalue:e.target.value
             })
         }
@@ -83,7 +89,8 @@ class Battle extends Component{
                     this.setState({
                         imgUrlLeft:res.avatar_url,
                         btnleftvalue:false,
-                        valueleft:true,                 
+                        valueleft:true, 
+                        errorleft:false,                
                     })
                   if(res.message){
                         this.setState({
@@ -107,7 +114,8 @@ class Battle extends Component{
                 this.setState({
                     imgUrlRight:res.avatar_url,
                     btnrightvalue:false,
-                    valuerigth:true, 
+                    valuerigth:true,
+                    errorright:false
                 })
                 if(res.message){
                     this.setState({

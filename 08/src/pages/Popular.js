@@ -13,6 +13,7 @@ class Popular extends Component {
             error:true,
             spinning:false,
             date: [],
+            errortext:'',
             switchIndex:window.location.href.substring(window.location.href.lastIndexOf("/") + 1),
             url: {
                 'ALL': 'https://api.github.com/search/repositories?q=stars:3E1&sort=stars&order=desc&type=Repositories',
@@ -36,23 +37,31 @@ class Popular extends Component {
         let { date } = this.state
         fetch(url).then(res => res.json())
             .then(res => {
-            
+                
                 if (res.items) {
                     this.setState({ date: [...date, ...res.items],
                         spinning:true });
                     
-                }else{
-                    
+                 }
+                else{
+                   
                     this.setState({
                         spinning:false,
                         error:false,
-                        hasMore:false
+                        hasMore:false,
+                        errortext:res.message
                     })
                 }
             })
             
             .catch(e => { 
-               console.log(e.message);
+                this.setState({
+                    spinning:false,
+                    error:false,
+                    hasMore:false,
+                    errortext:e.message
+                })
+              
             })
     
     }
@@ -67,11 +76,10 @@ class Popular extends Component {
         
     }
     render() {
-        const { date, hasMore, switchIndex,error,spinning } = this.state
-        console.log("error    "+error);
-        console.log("spinning    "+spinning)
-        console.log("switchIndex    "+switchIndex)
-        
+        const { date, hasMore, switchIndex,error,spinning,errortext } = this.state
+        // console.log("error    "+error);
+        // console.log("spinning    "+spinning)
+        // console.log("switchIndex    "+switchIndex)  
         return (
             <div>
                 <div >
@@ -125,6 +133,7 @@ class Popular extends Component {
                 {error  ?'':
                                 (<div style={{width:'400px',margin:'0 auto',height:'200px'}}>
                                             <h1 style={{fontSzie:'200px',fontWeight:'700',textAlign:'center'}}>Error !!!</h1>
+                                            <p style={{textAlign:'center',color:'red',fontSize:'30px'}}>{errortext}</p>
                                 </div>)}
 	 </div>
         );

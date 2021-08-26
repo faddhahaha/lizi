@@ -8,57 +8,85 @@ class Relust extends Component{
         this.state={
             player1:'',
             player2:'',
+            plater1Value:{},
+            plater2Value:{},
             active:false
         }
     }
-     async componentDidMount(){
+    
+
+    componentDidMount(){
         let a =this.props.location.search.split('?');
         let b =a[1].split('&');
         let player2=b[1].split("=")[1];
         let player1=b[0].split("=")[1];
-        if(player2===player1){
+        console.log(player1);
+        console.log(player2);
+        if(!player1 || !player2){
+            
+            console.log('zxzcxzxczxc');
+            window.location.hash='#/Battle'
+        } 
+        if(player2===player1 ){
             this.setState({
                 active:true
             })
         }
-        if(!player1 || !player2){
-            window.location.hash='#/Battle'
-        }
         let player1Url=`https://api.github.com/users/${player1}`;
         let player2Url=`https://api.github.com/users/${player2}`;
        
-        let plater1Value =  await fetch(player1Url).then(res => 
+        this.request(player1Url,player2Url);
+        console.log(this.state.plater2Value);
+        console.log(this.state.plater1Value);
+
+    }
+    request=(url1,url2)=>{
+        fetch(url2).then(res => 
             res.json()
         )
         .then(res=>{
-                
-            return res;
-             
-            
+            this.setState({
+                plater2Value:res
+            })
+           
+            console.log(res)
         })
-
-        let player2Value = await fetch(player2Url).then(res => 
+        fetch(url1).then(res => 
             res.json()
         )
         .then(res=>{
-            return res;
-            
+            this.setState({
+                plater1Value:res
+            })
+           
+            console.log(res)
         })
-        
-        if(player2Value.public_repos>plater1Value.public_repos){
-            this.setState({
-                player1:player2Value,
-                player2:plater1Value
-            })
+    }
+    judge=()=>{
+         const {plater2Value,plater1Value}=this.state;
+         if(plater2Value && plater1Value ){
+            if(plater2Value.public_repos>plater1Value.public_repos){
+                this.setState({
+                    player1:plater2Value,
+                    player2:plater1Value
+                })
 
-        }else if(player2Value.public_repos<=plater1Value.public_repos){
-            this.setState({
-                player1:plater1Value,
-                player2:player2Value
-            })
+            }else if(plater2Value.public_repos<plater1Value.public_repos){
+                this.setState({
+                    player1:plater1Value,
+                    player2:plater2Value
+                })
+            }else if(plater2Value.public_repos == plater1Value.public_repos){
+                this.setState({
+                    player1:plater1Value,
+                    player2:plater2Value,
+                    active:true
+                })
+            }
         }
-            
+      
        
+        
     }
     RESET=()=>{
         window.history.back(-1);
@@ -67,8 +95,7 @@ class Relust extends Component{
 
     render(){
         const {player1,player2}=this.state;
-        console.log(player1);
-        console.log(player2);
+        
         return (
             <div >
                 
@@ -80,7 +107,7 @@ class Relust extends Component{
                                         <img style={{width:'150px'}} src={player1.avatar_url} />
                                     </div>
                                     <div style={{color:'blue',fontWeight:'600',fontSize:'20px'}}>Scores:{player1.public_repos}</div>
-                                    <div style={{color:'red',fontWeight:'600',fontSize:'20px'}}>{player1.name}</div>
+                                    <div style={{color:'red',fontWeight:'600',fontSize:'20px',visibility:player1.name?"":'hidden'}}>{player1.name}</div>
                                     <div style={{width:'100%',paddingLeft:'10px'}}>
                                         <ul className="fa-ul">
                                             <li><i className="fa-li fa fa-book"></i>{player1.location}</li>
@@ -96,7 +123,7 @@ class Relust extends Component{
                                         <img style={{width:'150px'}} src={player2.avatar_url} />
                                     </div>
                                     <div style={{color:'blue',fontWeight:'600',fontSize:'20px'}}>Scores:{player2.public_repos}</div>
-                                    <div style={{color:'red',fontWeight:'600',fontSize:'20px'}}>{player2.name}</div>
+                                    <div style={{color:'red',fontWeight:'600',fontSize:'20px',visibility:player2.name?"":'hidden'}}>{player2.name}</div>
                                     <div style={{width:'100%',paddingLeft:'10px'}}>
                                         <ul className="fa-ul">
                                             <li><i className="fa-li fa fa-book"></i>{player2.location}</li>
