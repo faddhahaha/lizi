@@ -90,7 +90,7 @@
                 }
                 //获取数据
                 getData = (url = this.state.url[this.state.switchIndex],page1) => {
-                    debugger
+                    
                     let { data } = this.state
                     fetch(url).then(res => res.json())
                     .then(res => {
