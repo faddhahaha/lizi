@@ -15,12 +15,20 @@ class ShoppingCar extends Component {
 
     //删除
     delectItem=(item)=>{
-      const{dispatch} =this.props;
+      const{dispatch,commodityContent} =this.props;
       dispatch({
         type:'commodityContent/carDelectItem', 
         payload: item 
       })
+      if(commodityContent.store.length === 0){
+           dispatch({
+                type:'App/onClose'
+            })
+          window.localStorage.removeItem('value');  
+      }
+     
       this.installment();
+ 
     }
     //分期
     installment=()=>{

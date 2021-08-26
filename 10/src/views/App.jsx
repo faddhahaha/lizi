@@ -19,7 +19,7 @@ class App extends Component {
     }
     
 
-    componentWillMount(){ 
+    componentDidMount(){ 
         const{dispatch} = this.props;
         console.log('app');
         let localvalue =JSON.parse(window.localStorage.getItem("value"));
@@ -59,6 +59,11 @@ class App extends Component {
         dispatch({
             type:'commodityContent/carClear'
         })
+        dispatch({
+            type:'App/onClose'
+        })
+        window.localStorage.removeItem('value');  
+        
     };
     render() {
         

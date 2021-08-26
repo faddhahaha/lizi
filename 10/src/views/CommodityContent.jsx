@@ -8,9 +8,7 @@ class CommodityContent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            List: [],
-            ListNumber: 0,
-            changeValue:''
+           
         }
     }
     //分期
@@ -51,143 +49,26 @@ class CommodityContent extends Component {
         this.installment();
         this.setState();
     }
-    // componentWillUpdate(){
-    //     const { size,commodityContent } = this.props;
-    //     console.log(size);
-    //     let newList=[];
-    //         if (size.length > 0) {
-    //             commodityContent.commodityStore.map(item => {
-    //                     size.map(name => {
-    //                         if (name !== undefined && item.availableSizes.indexOf(name) !== -1 && commodityContent.commodityStore.commodityStore.indexOf(item) === -1) {
-                              
-    //                             newList.push(item);
-                                
-                            
-    //                         }
-    //                     })
-    //                 })
-              
-    //         } else {
-    //            newList = commodityContent.ordcommodityStore;
-                
-    //         }
-    //       this.sizeSelection();
-    
-    //     }
-        // sizeSelection=()=>{
-        //     const{dispatch}=this.props;
-        //     dispatch({
-        //         type:'commodityContent/sizeSelection',
-        //         payload:this.state.List
-        //     })
-        // }
-    
-    //初始化，页面数据
-    // componentDidMount() {
-       
-    //     const { size,dispatch } = this.props;
-        
-    //     console.log('初始化');
-    //     dispatch({
-    //         type:'commodityContent/sizeChange',
-    //         payload:size
-    //     })
-    //     // size.map((item)=>{
-    //     //     if(item.action){
-    //     //         fetch('https://react-shopping-cart-67954.firebaseio.com/products.json').then(res => {
-    //     //         console.log(res)
-    //     //         return res.json()
-    //     //         })
-    //     //         .then(res => {
-
-    //     //         if (res.products) {
-
-    //     //             let listName = [];
-    //     //             size.map(item => {
-    //     //                 if (item.action){
-    //     //                     listName.push(item.name)
-    //     //                 } 
-    //     //             })
-    //     //             let newList = [];
-    //     //             if (listName.length > 0) {
-    //     //                 res.products.map(item => {
-    //     //                     listName.map(name => {
-    //     //                         if (name !== undefined && item.availableSizes.indexOf(name) !== -1 && newList.indexOf(item) === -1) {
-    //     //                             newList.push(item);
-
-    //     //                         }
-    //     //                     })
-    //     //                 })
-
-    //     //             } else {
-    //     //                 newList = res.products;
-    //     //             }
-        
-    //     //             if(this.state.changeValue ==='LowestToHighest'){
-    //     //                 newList = newList.sort((a, b) => a.price - b.price)
-
-    //     //             }else if(this.state.changeValue ==='HighestToLowest'){
-    //     //                 newList = newList.sort((a, b) => b.price - a.price)
-    //     //             }
-    //     //             let newListNumber = newList.length;
-    //     //             this.setState({
-    //     //                 List: newList,
-    //     //                 ListNumber: newListNumber
-    //     //             })
-    //     //         }
-    //     //         }).catch(e => { console.log(e) })
-                
-    //     //     }
-    //     // }) 
-    //     // fetch('https://react-shopping-cart-67954.firebaseio.com/products.json').then(res => res.json())
-    //     //     .then(res => {
-    //     //         this.setState({
-    //     //             List: res.products,
-    //     //             ListNumber: res.products.length
-    //     //         })
-    //     // }).catch(e => { console.log(e) }) 
-    // }
    
     //排序选择
     onChange=value=>{
-        this.setState({
-            changeValue:value
+        const {dispatch} =this.props;
+        dispatch({
+            type:'commodityContent/sort',
+            payload:value
         })
-
     }
     error = (e) => {
         message.error(e);
     };
       
-   
     render() {
-        const { size,commodityContent,dispatch } = this.props;
-        console.log(size);
-        let newList=[];
-            if (size.length > 0) {
-                commodityContent.commodityStore.map(item => {
-                        size.map(name => {
-                            if (name !== undefined && item.availableSizes.indexOf(name) !== -1 && commodityContent.commodityStore.commodityStore.indexOf(item) === -1) {
-                              
-                                newList.push(item);
-                                
-                            
-                            }
-                        })
-                    })
-              
-            } else {
-               newList = commodityContent.ordcommodityStore;
-                
-            }
-            this.setState({
-                List:newList
-            })
-
+        const { commodityContent } = this.props;
+       
         return (
             <div style={{ marginLeft: '40px', marginTop: "100px" }}>
                 <Row>
-                    <Col span={12} style={{ display: 'flex', alignItems: 'center' }}><span>{commodityContent.commodityStore.length} Product(s) found</span> </Col>
+                    <Col span={12} style={{ display: 'flex', alignItems: 'center' }}><span>{commodityContent.commodityStore?commodityContent.commodityStore.length:''} Product(s) found</span> </Col>
                     <Col span={12} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} >
                         <span style={{ fontSize: '16px', marginRight: '10px' }}>Order by</span>
                         <Select defaultValue="Select" style={{ width: '200px' }}  onChange={this.onChange}>
@@ -228,8 +109,8 @@ class CommodityContent extends Component {
                                             <div style={{ textAlign: 'center' }}>Size: {item.availableSizes.join(',')}</div>
                                             <div style={{ textAlign: 'center', color: '#1b1a20' }}>
                                                 $ <span style={{ fontSize: '20px', fontWeight: 'bold' }}>{item.price.toFixed(2)}</span>
-                                            </div>
-                                            <div style={{ textAlign: 'center' }}>or {item.installments}X ${(item.price / item.installments).toFixed(2)}</div>
+                                            </div>   
+                                            <div style={{ textAlign: 'center',visibility:item.installments ===0 ?"hidden":'' }}>or {item.installments}X ${(item.price / item.installments).toFixed(2)}</div>
                                             <Button onClick={() => { this.showDrawer(item) }} className='btn1' size='large' style={{ marginTop: '10px', width: '100%', backgroundColor: '#1b1a20', color: '#fff' }}>Add to cart</Button>
                                         </div>}
                                     />
@@ -247,5 +128,5 @@ class CommodityContent extends Component {
     }
 
 }
-const mapStaetToProps = ({ global, commodityContent, size, App }) => ({ global, commodityContent, size, App })
+const mapStaetToProps = ({ global, commodityContent, App }) => ({ global, commodityContent, App })
 export default connect(mapStaetToProps)(CommodityContent);

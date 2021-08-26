@@ -22,7 +22,7 @@ export default {
     state: initState,
     subscriptions: {},
     effects: {
-            *request({payload},{put,call}){
+            *request(_,{call, put}){
     
                 function https(){
                     
@@ -33,35 +33,78 @@ export default {
                     .then(res => {
                         
                         return res;
-
-                        
-                
                     }) 
                     
                 }
 
                 let res = yield call(https);
-                console.log(res)
+               
                 yield put({
-                        type:'sizeSelection',
-                        payload:res.products
-                })
-                yield put({
-                    type:'commodityvalue',
+                    type:'commodityValue',
                     payload:res.products
-            })
+                })
             }
     },
     reducers: {
-        ////尺码筛选
+        commodityValue(state,{payload}){
+            state.ordcommodityStore =payload;
+            state.commodityStore =payload;
+            
+        
+                return {...state}
+        },
+        sizeChange(state){
+            let newList=[];
+            let listName = [];
+            state.commodityStore=state.ordcommodityStore;
+            state.size.map(item => {
+                    if (item.action){
+                        listName.push(item.name)
+                    } 
+            })
+            if (listName.length >0 ) {
+                state.commodityStore.map(item => {
+                    
+                    listName.map(name => {
+                            if (name !== undefined && item.availableSizes.indexOf(name) !== -1 && newList.indexOf(item) === -1) {
+                                newList.push(item);
+                               
+                            }
+                        })
+                    })
+                    
+            } else {
+               newList = state.ordcommodityStore;
+                 
+            }
+            state.commodityStore = newList;
+             
+            return {...state}
+        },
+        //排序操作
+        sort(state,{payload}){
+            let newList =state.commodityStore;
+            
+            if(payload ==='LowestToHighest'){
+                    newList = newList.sort((a, b) => a.price - b.price)
+
+            }else if(payload ==='HighestToLowest'){
+                    newList = newList.sort((a, b) => b.price - a.price)
+            }else if(payload === 'Select'){
+                    newList = newList.sort((a,b)=>a.id-b.id)
+            }
+            state.commodityStore=newList;
+            return {...state}
+        },
+        //尺码筛选
         changeSize(state,{payload}){ 
-            state.map((item)=>{
+            state.size.map((item)=>{
                 if(item.name === payload){
                     item.action=!item.action;
                 }
                 
             })
-            return [...state]
+            return {...state}
         },
         //保存原始值
         commodityvalue(state,{payload}){

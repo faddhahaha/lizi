@@ -12,30 +12,29 @@ class Size extends Component {
     btnClickHandler = (e) => {
         const { dispatch } = this.props
         dispatch({
-            type: "size/changeSize",
+            type: "commodityContent/changeSize",
             payload: e.target.innerText
         })
-        // this.sizeValue();
+        dispatch({
+            type:'commodityContent/sizeChange',
+         
+        })
+        
     }
    
     // sizeValue=()=>{
-    //     const { size,dispatch } = this.props;
-    //     console.log('初始化');
+    //     const { dispatch } = this.props;
+       
     //     dispatch({
-    //         type:'commodityContent/sizeChange',
-    //         payload:size
+    //         type:'commodityContent/sizeSelection',
+         
     //     })
-    // //    this.commodityRefresh()
+    
     // }
-    // commodityRefresh=()=>{
-    //     const {dispatch,commodityContent} =this.props;
-    //     dispatch({
-    //         type:"commodityContent/sizeSelection",
-    //         payload:commodityContent.commodityStore
-    //     })
-    // }
+
     render() {
-        const { size } = this.props
+        const { commodityContent } = this.props
+        console.log(commodityContent)
         return (
             <div style={{ marginTop: "100px" }}>
                 <Row>
@@ -46,7 +45,7 @@ class Size extends Component {
                 <Row>
                     <Col span={11}></Col>
                     <Col span={13} style={{ display: 'flex', flexWrap: 'wrap', }}>
-                        {size.map(item => {
+                        {commodityContent.size.map(item => {
                             return (
                                 <div onClick={this.btnClickHandler} 
                                      className="sizeItem"  
@@ -83,5 +82,5 @@ class Size extends Component {
     }
 
 }
-const mapStaetToProps = ({ global, commodityContent, size }) => ({ global, commodityContent, size })
+const mapStaetToProps = ({ global, commodityContent }) => ({ global, commodityContent })
 export default connect(mapStaetToProps)(Size);
