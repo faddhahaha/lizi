@@ -8,7 +8,7 @@ class App extends Component {
         super(props);
         this.state={navigationValue:location.hash.substring(1)}
     }
-    onSwich = (value) =>{
+    onSwich = (value) =>
         this.setState({
             navigationValue:value
         })
