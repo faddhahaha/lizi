@@ -17,22 +17,22 @@ class Relust extends Component{
 
     componentDidMount(){
         let a =this.props.location.search.split('?');
-        let b =a[1].split('&');
+        let b =a[1].split('&';
         let player2=b[1].split("=")[1];
         let player1=b[0].split("=")[1];
         console.log(player1);
         console.log(player2);
-        if(!player1 || !player2){
+        if(!player1 || !player2)
             
             console.log('zxzcxzxczxc');
             window.location.hash='#/Battle'
         } 
-        if(player2===player1 ){
+        if(player2==player1 ){
             this.setState({
                 active:true
             })
         }
-        let player1Url=`https://api.github.com/users/${player1}`;
+        let player1Url=https://api.github.com/users/${player1}`;
         let player2Url=`https://api.github.com/users/${player2}`;
        
         this.request(player1Url,player2Url);
