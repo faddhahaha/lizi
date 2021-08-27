@@ -27,7 +27,7 @@ class Popular extends Component {
         }
         this.loadMoreData()
     }
-     oadMoreData = (page = 1) => {
+     loadMoreData = (page = 1) => {
         // page 当前滚动到了第几页
         const { pageUrl } = this.state
         this.getData(`${pageUrl}&page=${page}`)
