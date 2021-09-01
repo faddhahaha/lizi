@@ -13,9 +13,9 @@
     margin-right: 0 !important;
     
   }
-  #two{
+  /* #two{
     width: 1200px ;
-  }
+  } */
   p{
     word-break:break-all
   } 
@@ -61,9 +61,9 @@
       margin-top: 40px;
       
     }
-    body>.container-fluid >#two{
+    /* body>.container-fluid >#two{
       width: 100%
-    }
+    } */
   }
 
   @media screen and (max-width:894px) and  (min-width:654px) {
