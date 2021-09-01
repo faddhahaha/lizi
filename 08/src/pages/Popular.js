@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import InfiniteScroll from 'react-infinite-scroller'
-import  './PopularCss.css';
+import  './PopularCss.less';
 import { Spin,Modal} from 'antd'
 import 'antd/dist/antd.css';
 import {Link}  from  'react-router-dom';
@@ -84,11 +84,11 @@ class Popular extends Component {
             <div>
                 <div >
                 <h1 style={{textAlign:'center'}}>
-                         <Link to="/ALL" style={{marginRight:'20px',color:(switchIndex=='ALL') ? "red" : " ",cursor:'default'}} onClick={()=>this.onSwitch('ALL')}>ALL</Link>
-                         <Link to="/ALL/JavaScript" style={{marginRight:'20px',color:(switchIndex=='JavaScript') ? "red" : " ",cursor:'default'}} onClick={()=>this.onSwitch('JavaScript')}>JavaScript</Link>
-                         <Link to="/ALL/Ruby" style={{marginRight:'20px',color:(switchIndex=='Ruby') ? "red" : " ",cursor:'default'}} onClick={()=>this.onSwitch('Ruby')}>Ruby</Link>
-                         <Link to="/ALL/Java" style={{marginRight:'20px',color:(switchIndex=='Java') ? "red" : " ",cursor:'default'}} onClick={()=>this.onSwitch('Java')}>java</Link>
-                         <Link to="/ALL/CSS" style={{marginRight:'20px',color:(switchIndex=='CSS') ? "red" : " ",cursor:'default'}} onClick={()=>this.onSwitch('CSS')}>CSS</Link>
+                         <Link to="/Popular" style={{marginRight:'20px',color:(switchIndex=='ALL') ? "red" : " ",cursor:'default'}} onClick={()=>this.onSwitch('ALL')}>ALL</Link>
+                         <Link to="/Popular?JavaScript" style={{marginRight:'20px',color:(switchIndex=='JavaScript') ? "red" : " ",cursor:'default'}} onClick={()=>this.onSwitch('JavaScript')}>JavaScript</Link>
+                         <Link to="/Popular?Ruby" style={{marginRight:'20px',color:(switchIndex=='Ruby') ? "red" : " ",cursor:'default'}} onClick={()=>this.onSwitch('Ruby')}>Ruby</Link>
+                         <Link to="/Popular?Java" style={{marginRight:'20px',color:(switchIndex=='Java') ? "red" : " ",cursor:'default'}} onClick={()=>this.onSwitch('Java')}>java</Link>
+                         <Link to="/Popular?CSS" style={{marginRight:'20px',color:(switchIndex=='CSS') ? "red" : " ",cursor:'default'}} onClick={()=>this.onSwitch('CSS')}>CSS</Link>
                 </h1>
                 </div>
                 <InfiniteScroll
@@ -100,12 +100,13 @@ class Popular extends Component {
                     key={switchIndex}
                     style={{width: '100%',overflow:'hidden'}}
                 >
+            
                     <div className='row'  style={{display:'flex',justifyContent:'space-around'}}>
                         {date.map((item, index) => {
                             return (
-                                <div className="col-lg-3 col-sm-12 col-md-6 " key={index}  >
+                                <div className="col-lg-3 col-sm-12 col-md-6  center" key={index}  >
                                 <div style={{backgroundColor:'#EBEBEB',display:'flex',flexDirection:'column', alignItems:'center', justifyContent: 'center',margin:'1% 1%'}}> 
-                                    <h2 style={{margin:'10px 0'}}>#{index}</h2>
+                                    <h2  className="title">#{index}</h2>
                                     <div style={{margin:'0 auto',display:' inline-block',textAlign:'center',width:'100%'}}>
                                         <img style={{width:'150px'}} src={item.owner.avatar_url} />
                                     </div>

@@ -20,8 +20,8 @@ class App extends Component {
             <HashRouter>
                     <div style={{ fontSize:'30px',fontWeight:'600',margin:'40px 20px',display:'flex'}} >
                         
-                        <div style={{margin:'0 20px'}} onClick={()=>{ this.onSwich('/ALL') }} >
-                        <Link to='/ALL'  style={{color:navigationValue==='/'||navigationValue==='/ALL'||navigationValue==='/ALL/JavaScript'||navigationValue==='/ALL/CSS' ||navigationValue==='/ALL/java'||navigationValue==='/ALL/Ruby' ? 'red':'black'}} >  Popular </Link>   
+                        <div style={{margin:'0 20px'}} onClick={()=>{ this.onSwich('/Popular') }} >
+                        <Link to='/Popular'  style={{color:navigationValue==='/'||navigationValue==='/Popular'||navigationValue==='/Popular/JavaScript'||navigationValue==='/Popular/CSS' ||navigationValue==='/ALL/java'||navigationValue==='/ALL/Ruby' ? 'red':'black'}} >  Popular </Link>   
                         </div>
                         <div style={{margin:'0 20px'}} onClick={()=>{ this.onSwich('/Battle') }}>
                         <Link to='/Battle'  style={{color: navigationValue==='/Battle'||navigationValue==='/Battle/relust' ? 'red':'black'}}> Battle</Link>   
@@ -32,11 +32,11 @@ class App extends Component {
                     <Route  path="/Battle" exact component={Battle}>  
                         
                     </Route>
-                    <Route path="/ALL" component={Popular}>
+                    <Route path="/Popular" component={Popular}>
                             
                     </Route>
                         <Route path="/Battle/relust" component={Relust} />
-                    <Redirect exact from="/" to="/ALL"  />
+                    <Redirect exact from="/" to="/Popular"  />
                     </Switch>
                     </Suspense>
             </HashRouter>

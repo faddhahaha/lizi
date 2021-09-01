@@ -6,8 +6,6 @@ class Battle extends Component{
     constructor(props){
         super(props);
         this.state={
-            left:false,
-            right:false,
             valueleft:true,
             valuerigth:true,
             btnleftvalue:false,
@@ -26,7 +24,6 @@ class Battle extends Component{
     }
     clearLeft=()=>{
         this.setState({
-            left:false,
             imgUrlLeft:''     
         }) 
         let a =document.getElementsByClassName('inputleft')[0];
@@ -34,7 +31,6 @@ class Battle extends Component{
     }
     clearRight=()=>{
         this.setState({
-            right:false,
             imgUrlRight:''
         }) 
         let a =document.getElementsByClassName('inputright')[0];
@@ -44,19 +40,23 @@ class Battle extends Component{
     rightkeyUp = (e) => {
         if (e.keyCode === 13) {
            this.setState({
-            right:true,
             btnrightvalue:true
            })
-        this.requestVlaue(this.state.rightvalue,'right');
+           if(! this.state.imgUrlRight){
+                this.requestVlaue(this.state.rightvalue,'right');
+           }
+       
         }
     };
     leftkeyUp = (e) => {
         if (e.keyCode === 13) {
            this.setState({
-            left:true,
             btnleftvalue:true
            })
-        this.requestVlaue(this.state.leftvalue,'left');
+           if(! this.state.imgUrlLeft){
+               this.requestVlaue(this.state.leftvalue,'left');
+           }
+            
         }
     };
     changeLeft=(e)=>{
@@ -147,7 +147,7 @@ class Battle extends Component{
         this.requestVlaue(this.state.rightvalue,'right');
     }
     render(){
-        const {errorleft,errorright,left,right,valueleft,valuerigth,leftvalue,rightvalue,imgUrlRight,imgUrlLeft,btnleftvalue,btnrightvalue} =this.state;
+        const {errorleft,errorright,valueleft,valuerigth,leftvalue,rightvalue,imgUrlRight,imgUrlLeft,btnleftvalue,btnrightvalue} =this.state;
     
         return(
             <div>
